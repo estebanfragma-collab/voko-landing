@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0A0A0B;
+  --indigo: #6366F1;
+  --indigo2: #818CF8;
+  --violet: #A78BFA;
+  --cyan: #22D3EE;
+  --red: #EF4444;
+  --green: #22C55E;
+  --amber: #F59E0B;
+  --text: #F8FAFC;
+  --muted: #94A3B8;
+  --dim: #475569;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  background: #0A0A0B;
+  color: #F8FAFC;
+  font-family: var(--font-outfit), sans-serif;
+  overflow-x: hidden;
+}
+
+/* Ticker */
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.ticker-track {
+  display: flex;
+  gap: 64px;
+  white-space: nowrap;
+  animation: ticker 35s linear infinite;
+}
+
+/* Pulse glow CTA */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(99,102,241,0.5); }
+  50% { box-shadow: 0 0 48px rgba(99,102,241,0.9), 0 0 80px rgba(99,102,241,0.3); }
+}
+.btn-pulse {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Cursor blink */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.cursor-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Gradient text */
+.text-gradient {
+  background: linear-gradient(135deg, #6366F1, #A78BFA, #22D3EE);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glass card */
+.glass {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  backdrop-filter: blur(12px);
+}
+
+/* Terminal window */
+.terminal {
+  background: rgba(10,10,11,0.92);
+  border: 1px solid rgba(99,102,241,0.25);
+  border-radius: 14px;
+  overflow: hidden;
+  font-family: var(--font-dm-mono), monospace;
+}
+
+.terminal-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px;
+  border-bottom: 1px solid rgba(99,102,241,0.15);
+  background: rgba(99,102,241,0.05);
+}
