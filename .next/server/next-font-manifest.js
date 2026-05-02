@@ -1,1 +1,0 @@
-self.__NEXT_FONT_MANIFEST='{"pages":{},"app":{"/Users/estebanponce/Projects/ayagentes/voko-landing/app/layout":["static/media/d7df244fe7b07b95-s.p.woff2","static/media/b7ea2ab4a8ad1f81-s.p.woff2","static/media/0e96d314a90a6138-s.p.woff2","static/media/fa3e259cafa8f47e-s.p.woff2","static/media/7b0b24f36b1a6d0b-s.p.woff2"]},"appUsingSizeAdjust":true,"pagesUsingSizeAdjust":false}';
