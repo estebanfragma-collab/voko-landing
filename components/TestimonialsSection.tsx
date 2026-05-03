@@ -4,9 +4,9 @@ import { useState, useEffect, useRef } from 'react'
 const COLORS = ['#6366F1', '#22D3EE', '#22C55E']
 
 const T = [
-  { name: 'Valentina M.', role: 'Consultora freelance · Bogotá', before: 'Escribía propuestas en 20 min.', after: 'Ahora en 2 min. Gano más clientes.' },
-  { name: 'Rodrigo T.',   role: 'Dueño de agencia · Quito',     before: 'Perdía clientes por tono áspero.', after: 'Modo Firme. Cobré $8k que debía.' },
-  { name: 'Camila S.',    role: 'Ejecutiva de ventas · CDMX',   before: 'Clientes confundían mi tono.', after: 'Ahora 3 tonos. Cierre +40%.' },
+  { name: 'Valentina M.', role: 'Consultora freelance · Bogotá', before: 'Escribía propuestas en 20 min.', after: 'Ahora las hago en minutos. Gano más clientes.' },
+  { name: 'Rodrigo T.',   role: 'Dueño de agencia · Quito',     before: 'Perdía clientes por tono áspero.', after: 'Usé modo Firme y cobré lo que me debían.' },
+  { name: 'Camila S.',    role: 'Ejecutiva de ventas · CDMX',   before: 'Clientes confundían mi tono.', after: 'Ahora tengo el tono exacto para cada situación.' },
 ]
 
 export default function TestimonialsSection() {
