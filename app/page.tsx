@@ -348,10 +348,11 @@ export default function Home() {
         <section id="industrias" style={S.section}>
           <div style={S.container}>
             <div style={{ textAlign: 'center', marginBottom: 56 }}>
-              <h2 style={S.h2}>Voko funciona para cualquiera que comunique por texto.</h2>
-              <p style={{ ...S.muted, maxWidth: 480, margin: '0 auto' }}>
-                Especialmente si lo hace todos los días.
-              </p>
+              <div style={{ fontSize: 11, fontFamily: 'var(--font-dm-mono)', color: '#22D3EE', textTransform: 'uppercase', letterSpacing: '0.2em', marginBottom: 14, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 7 }}>
+                <span className="blink-dot" style={{ width: 6, height: 6, borderRadius: '50%', background: '#22D3EE', display: 'inline-block' }} />
+                Para quién es
+              </div>
+              <h2 style={S.h2}>¿Tu trabajo depende de cómo escribes?</h2>
             </div>
             <IndustriasGrid />
           </div>
