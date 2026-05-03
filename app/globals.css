@@ -191,6 +191,46 @@ body {
   animation: draw-line 1.2s ease forwards;
 }
 
+/* ── Cyan card border variant ── */
+.card-glow-outer.card-glow-cyan::before {
+  background: conic-gradient(from 0deg, transparent 58%, rgba(34,211,238,0.85), rgba(99,102,241,0.5), rgba(34,211,238,0.3), transparent);
+}
+.card-glow-outer.card-glow-cyan:hover {
+  box-shadow: 0 0 32px rgba(34,211,238,0.2), 0 0 64px rgba(34,211,238,0.07);
+}
+
+/* ── Hero card animated scan line ── */
+@keyframes scan-top {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(400%); }
+}
+.hero-scan-top {
+  position: absolute;
+  top: 0; left: 0;
+  width: 25%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #22D3EE, #6366F1, transparent);
+  animation: scan-top 3s linear infinite;
+}
+
+/* ── Blinking dot ── */
+@keyframes blink-dot {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+.blink-dot {
+  animation: blink-dot 1.4s ease-in-out infinite;
+}
+
+/* ── Hero badge pulse ── */
+@keyframes badge-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}
+.hero-badge-dot {
+  animation: badge-pulse 1.2s ease-in-out infinite;
+}
+
 /* ── Floating particle animations ── */
 @keyframes fp1 {
   0%, 100% { transform: translate(0,0); }

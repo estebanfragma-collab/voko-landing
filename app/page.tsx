@@ -13,6 +13,8 @@ import DoloresGrid from '@/components/DoloresGrid'
 import StepsSection from '@/components/StepsSection'
 import TestimonialsSection from '@/components/TestimonialsSection'
 import IndustriasGrid from '@/components/IndustriasGrid'
+import HeroCaptureCard from '@/components/HeroCaptureCard'
+import HeroLiveFeed from '@/components/HeroLiveFeed'
 
 // ─────────────────────────────────────────────
 // TERMINAL LINES
@@ -196,6 +198,12 @@ export default function Home() {
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center' }}>
               {/* Left */}
               <div>
+                {/* Live badge */}
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: 7, marginBottom: 20, padding: '5px 12px', background: 'rgba(34,211,238,0.06)', border: '1px solid rgba(34,211,238,0.18)', borderRadius: 100 }}>
+                  <span className="hero-badge-dot" style={{ width: 6, height: 6, borderRadius: '50%', background: '#22D3EE', boxShadow: '0 0 6px #22D3EE', display: 'inline-block' }} />
+                  <span style={{ fontSize: 11, fontFamily: 'var(--font-dm-mono)', color: '#22D3EE', letterSpacing: '0.1em' }}>PRUEBA EN VIVO</span>
+                </div>
+
                 <h1 style={{
                   fontFamily: 'var(--font-dm-serif)', fontWeight: 400,
                   fontSize: 'clamp(48px, 6vw, 80px)', letterSpacing: '-0.04em', lineHeight: 0.95,
@@ -224,35 +232,13 @@ export default function Home() {
                     </span>
                   ))}
                 </div>
+
+                <HeroLiveFeed />
               </div>
 
-              {/* Right — capture form */}
+              {/* Right — capture card */}
               <div id="hero-form" style={{ scrollMarginTop: 80 }}>
-                <div style={{
-                  background: 'rgba(255,255,255,0.03)',
-                  border: '1px solid rgba(99,102,241,0.25)',
-                  borderRadius: 20, padding: 32,
-                  backdropFilter: 'blur(12px)',
-                }}>
-                  <div style={{ fontSize: 11, fontFamily: 'var(--font-dm-mono)', textTransform: 'uppercase', letterSpacing: '0.2em', color: '#6366F1', marginBottom: 16 }}>
-                    Acceso inmediato
-                  </div>
-                  <h3 style={{ fontFamily: 'var(--font-dm-serif)', fontSize: 24, color: '#F8FAFC', marginBottom: 8 }}>
-                    Tu primer mensaje, listo hoy.
-                  </h3>
-                  <p style={{ fontSize: 13, color: '#475569', marginBottom: 24 }}>
-                    Ilimitado durante 15 días. Cancela cuando quieras.
-                  </p>
-                  <HeroForm />
-                  <button style={{
-                    width: '100%', marginTop: 12, padding: '13px',
-                    background: 'linear-gradient(135deg, #6366F1, #A78BFA)',
-                    border: 'none', borderRadius: 10, color: '#fff',
-                    fontWeight: 700, fontSize: 14, cursor: 'pointer',
-                  }} className="btn-pulse">
-                    Activar 15 días gratis
-                  </button>
-                </div>
+                <HeroCaptureCard />
               </div>
             </div>
           </div>
