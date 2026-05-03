@@ -98,7 +98,7 @@ function ErrorCard({ d, dropped, expanded, setExpanded }: {
       onMouseEnter={handleMouseEnter}
       style={{
         position: 'relative',
-        background: 'rgba(239,68,68,0.05)',
+        background: 'rgba(255,255,255,0.03)',
         border: '1px solid rgba(239,68,68,0.2)',
         borderLeft: '3px solid #EF4444',
         borderRadius: 14,
@@ -123,7 +123,7 @@ function ErrorCard({ d, dropped, expanded, setExpanded }: {
       <div style={{
         position: 'absolute', right: 14, top: 6,
         fontSize: 88, fontWeight: 900, lineHeight: 1,
-        color: 'rgba(239,68,68,0.07)',
+        color: 'rgba(239,68,68,0.04)',
         fontFamily: 'var(--font-dm-mono)',
         userSelect: 'none', pointerEvents: 'none',
       }}>{displayNum}</div>
