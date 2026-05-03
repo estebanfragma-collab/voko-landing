@@ -1,15 +1,45 @@
 'use client'
 import { useState } from 'react'
+import { createClient } from '@supabase/supabase-js'
+
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+)
 
 export default function HeroForm() {
-  const [name, setName] = useState('')
   const [email, setEmail] = useState('')
-  const [submitted, setSubmitted] = useState(false)
+  const [password, setPassword] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!email.trim()) return
-    setSubmitted(true)
+    if (!email.trim() || !password.trim()) return
+    setLoading(true)
+    setError('')
+
+    const { error: signUpError } = await supabase.auth.signUp({
+      email,
+      password,
+      options: { emailRedirectTo: undefined },
+    })
+
+    if (signUpError) {
+      setError(signUpError.message)
+      setLoading(false)
+      return
+    }
+
+    const { error: signInError } = await supabase.auth.signInWithPassword({ email, password })
+
+    if (signInError) {
+      setError(signInError.message)
+      setLoading(false)
+      return
+    }
+
+    window.location.href = 'https://voko.lat/onboarding'
   }
 
   const inputStyle: React.CSSProperties = {
@@ -23,25 +53,8 @@ export default function HeroForm() {
     outline: 'none',
   }
 
-  if (submitted) {
-    return (
-      <div style={{ textAlign: 'center', padding: '40px 0' }}>
-        <div style={{ fontSize: 32, marginBottom: 12 }}>✓</div>
-        <div style={{ fontWeight: 700, fontSize: 18, color: '#22C55E', marginBottom: 8 }}>¡Listo!</div>
-        <div style={{ fontSize: 13, color: '#94A3B8' }}>Revisa tu email para activar tu cuenta.</div>
-      </div>
-    )
-  }
-
   return (
     <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-      <input
-        type="text"
-        placeholder="Tu nombre"
-        value={name}
-        onChange={e => setName(e.target.value)}
-        style={inputStyle}
-      />
       <input
         type="email"
         placeholder="Tu email"
@@ -50,8 +63,21 @@ export default function HeroForm() {
         required
         style={inputStyle}
       />
+      <input
+        type="password"
+        placeholder="Elige una contraseña"
+        value={password}
+        onChange={e => setPassword(e.target.value)}
+        required
+        minLength={6}
+        style={inputStyle}
+      />
+      {error && (
+        <p style={{ fontSize: 12, color: '#EF4444', margin: 0 }}>{error}</p>
+      )}
       <button
         type="submit"
+        disabled={loading}
         className="btn-pulse"
         style={{
           background: 'linear-gradient(135deg, #6366F1, #A78BFA)',
@@ -61,11 +87,12 @@ export default function HeroForm() {
           padding: '13px',
           fontWeight: 700,
           fontSize: 15,
-          cursor: 'pointer',
+          cursor: loading ? 'not-allowed' : 'pointer',
           width: '100%',
+          opacity: loading ? 0.7 : 1,
         }}
       >
-        Activar gratis →
+        {loading ? 'Creando cuenta...' : 'Activar gratis →'}
       </button>
       <p style={{ fontSize: 11, color: '#475569', textAlign: 'center', margin: 0 }}>
         5 transformaciones gratis. Sin compromiso.
