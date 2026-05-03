@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState, useRef, useCallback } from 'react'
 
 // ── Animated sparkline ──────────────────────────────────────
 const AnimatedSparkline = ({ color, values }: { color: string; values: number[] }) => {
@@ -125,7 +125,14 @@ export default function VSLDashboard() {
   const [liveBlink, setLiveBlink] = useState(true)
   const [feedIdx, setFeedIdx]     = useState(0)
   const [feedVisible, setFeedVisible] = useState(true)
-  const [elapsed, setElapsed]     = useState(0) // seconds since mount
+  const [elapsed, setElapsed]     = useState(0)
+  const [playing, setPlaying]     = useState(false)
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  const handlePlay = useCallback(() => {
+    setPlaying(true)
+    videoRef.current?.play()
+  }, [])
 
   // Clock
   useEffect(() => {
@@ -258,12 +265,43 @@ export default function VSLDashboard() {
             </div>
 
             {/* Video area */}
-            <div style={{ aspectRatio: '16/9', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'linear-gradient(135deg, rgba(2,6,20,1) 0%, rgba(10,8,20,1) 100%)', position: 'relative', flexDirection: 'column', gap: 12 }}>
-              <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(132,204,22,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(132,204,22,0.03) 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
-              <div style={{ width: 64, height: 64, borderRadius: '50%', background: '#EF4444', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 0 32px rgba(239,68,68,0.5)', cursor: 'pointer', position: 'relative', zIndex: 1, flexShrink: 0 }}>
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><polygon points="6,3 20,12 6,21" /></svg>
-              </div>
-              <span style={{ fontSize: 12, fontFamily: 'var(--font-dm-mono)', color: '#475569', position: 'relative', zIndex: 1 }}>▶ Demo · 60 seg · sin registro</span>
+            <div style={{ aspectRatio: '16/9', position: 'relative', background: '#020818', overflow: 'hidden' }}>
+              {/* Actual video */}
+              <video
+                ref={videoRef}
+                src="/videos/Avatar_Video_1080p.mp4"
+                controls={playing}
+                playsInline
+                preload="metadata"
+                onEnded={() => setPlaying(false)}
+                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+              />
+
+              {/* Play button overlay — shown until user clicks */}
+              {!playing && (
+                <div
+                  onClick={handlePlay}
+                  style={{
+                    position: 'absolute', inset: 0,
+                    display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 12,
+                    background: 'linear-gradient(135deg, rgba(2,6,20,0.85) 0%, rgba(10,8,20,0.85) 100%)',
+                    cursor: 'pointer',
+                    zIndex: 2,
+                  }}
+                >
+                  <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(132,204,22,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(132,204,22,0.03) 1px, transparent 1px)', backgroundSize: '32px 32px', pointerEvents: 'none' }} />
+                  <div style={{
+                    width: 64, height: 64, borderRadius: '50%', background: '#EF4444',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    boxShadow: '0 0 32px rgba(239,68,68,0.5)',
+                    position: 'relative', zIndex: 1, flexShrink: 0,
+                    transition: 'transform 0.15s, box-shadow 0.15s',
+                  }}>
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><polygon points="6,3 20,12 6,21" /></svg>
+                  </div>
+                  <span style={{ fontSize: 12, fontFamily: 'var(--font-dm-mono)', color: '#475569', position: 'relative', zIndex: 1 }}>▶ Demo · 60 seg · sin registro</span>
+                </div>
+              )}
             </div>
           </div>
 
