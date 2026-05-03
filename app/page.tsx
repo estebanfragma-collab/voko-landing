@@ -5,6 +5,7 @@ import ScrollReveal from '@/components/ScrollReveal'
 import PriceToggle from '@/components/PriceToggle'
 import FaqAccordion from '@/components/FaqAccordion'
 import HeroForm from '@/components/HeroForm'
+import VSLDashboard from '@/components/VSLDashboard'
 
 // ─────────────────────────────────────────────
 // TERMINAL LINES
@@ -257,43 +258,9 @@ export default function Home() {
             <p style={{ fontFamily: 'var(--font-dm-serif)', fontStyle: 'italic', fontSize: 20, color: '#94A3B8', textAlign: 'center', maxWidth: 600, margin: '0 auto 40px' }}>
               "En 60 segundos vas a entender por qué nunca más vas a escribir un mensaje importante a mano."
             </p>
-
-            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 12, marginBottom: 24 }}>
-              {[
-                { dot: '#6366F1', text: '847 mensajes transformados hoy' },
-                { dot: '#22D3EE', text: 'Tono promedio: Profesional' },
-                { dot: '#A78BFA', text: 'Tiempo ahorrado: 4.2 min/msg' },
-              ].map(m => (
-                <div key={m.text} style={{ display: 'flex', alignItems: 'center', gap: 8, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 100, padding: '6px 14px' }}>
-                  <span style={{ width: 6, height: 6, borderRadius: '50%', background: m.dot, display: 'block' }} />
-                  <span style={{ fontSize: 12, fontFamily: 'var(--font-dm-mono)', color: '#94A3B8' }}>{m.text}</span>
-                </div>
-              ))}
-            </div>
-
-            <div style={{ maxWidth: 800, margin: '0 auto', position: 'relative' }}>
-              <div style={{ background: 'rgba(8,10,8,0.9)', border: '1px solid rgba(99,102,241,0.25)', borderRadius: 16, overflow: 'hidden' }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 16px', borderBottom: '1px solid rgba(99,102,241,0.1)', background: 'rgba(99,102,241,0.04)' }}>
-                  <div style={{ display: 'flex', gap: 6 }}>
-                    <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#EF4444' }} />
-                    <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#F59E0B' }} />
-                    <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#22C55E' }} />
-                  </div>
-                  <span style={{ fontSize: 11, fontFamily: 'var(--font-dm-mono)', color: '#475569' }}>voko.lat — demo en vivo</span>
-                  <div style={{ width: 60 }} />
-                </div>
-                <div style={{ aspectRatio: '16/9', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'linear-gradient(135deg, rgba(99,102,241,0.06) 0%, rgba(167,139,250,0.06) 100%)', flexDirection: 'column', gap: 16 }}>
-                  <div style={{ width: 72, height: 72, borderRadius: '50%', background: 'linear-gradient(135deg, #6366F1, #A78BFA)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 0 48px rgba(99,102,241,0.5)', cursor: 'pointer' }}>
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><polygon points="5,3 19,12 5,21" /></svg>
-                  </div>
-                  <span style={{ fontSize: 13, fontFamily: 'var(--font-dm-mono)', color: '#6366F1' }}>▶ Demo en vivo · 60 seg</span>
-                </div>
-              </div>
-              <div style={{ textAlign: 'center', marginTop: 24 }}>
-                <a href="#hero-form" style={btnPrimary} className="btn-pulse">
-                  Probar ahora gratis →
-                </a>
-              </div>
+            <VSLDashboard />
+            <div style={{ textAlign: 'center', marginTop: 24 }}>
+              <a href="#hero-form" style={btnPrimary} className="btn-pulse">Probar ahora gratis →</a>
             </div>
           </div>
         </section>
