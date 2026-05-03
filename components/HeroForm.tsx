@@ -43,7 +43,7 @@ export default function HeroForm() {
     const { data: sessionData } = await supabase.auth.getSession()
     const accessToken = sessionData.session?.access_token
     const refreshToken = sessionData.session?.refresh_token
-    window.location.href = `https://voko.lat/onboarding?access_token=${accessToken}&refresh_token=${refreshToken}`
+    window.location.href = `https://app.voko.lat/onboarding?access_token=${accessToken}&refresh_token=${refreshToken}`
   }
 
   const inputStyle: React.CSSProperties = {
