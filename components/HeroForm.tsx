@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import { createClient } from '@supabase/supabase-js'
 
-const supabase = createClient(
+const getSupabase = () => createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 )
@@ -19,6 +19,7 @@ export default function HeroForm() {
     setLoading(true)
     setError('')
 
+    const supabase = getSupabase()
     const { error: signUpError } = await supabase.auth.signUp({
       email,
       password,
