@@ -331,10 +331,10 @@ export default function Home() {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 12, marginBottom: 56 }}>
               {metrics.map(m => (
                 <ScrollReveal key={m.label}>
-                  <AnimatedCard innerStyle={{ padding: '28px 24px', textAlign: 'center' }}>
+                  <div style={{ background: 'transparent', border: '1px solid rgba(255,255,255,0.2)', borderRadius: 14, padding: '28px 24px', textAlign: 'center' }}>
                     <div style={{ fontWeight: 800, fontSize: 44, color: m.color, letterSpacing: '-2px', lineHeight: 1, marginBottom: 8 }}>{m.value}</div>
                     <div style={{ fontSize: 13, color: '#94A3B8' }}>{m.label}</div>
-                  </AnimatedCard>
+                  </div>
                 </ScrollReveal>
               ))}
             </div>
@@ -426,22 +426,20 @@ export default function Home() {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(440px, 1fr))', gap: 12 }}>
               {objeciones.map(obj => (
                 <ScrollReveal key={obj.id}>
-                  <AnimatedCard>
-                    <div style={{ overflow: 'hidden', borderRadius: 13 }}>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', padding: '10px 16px', borderBottom: '1px solid rgba(255,255,255,0.05)', background: 'rgba(255,255,255,0.02)' }}>
-                        <div style={{ display: 'flex', gap: 6 }}>
-                          {['#EF4444','#F59E0B','#22C55E'].map(c => <div key={c} style={{ width: 8, height: 8, borderRadius: '50%', background: c }} />)}
-                        </div>
-                        <span style={{ fontSize: 10, fontFamily: 'var(--font-dm-mono)', color: '#475569' }}>objecion_{obj.id}.md</span>
+                  <div style={{ background: 'transparent', border: '1px solid rgba(99,102,241,0.2)', borderRadius: 14, overflow: 'hidden' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', padding: '10px 16px', borderBottom: '1px solid rgba(255,255,255,0.05)', background: 'rgba(255,255,255,0.02)' }}>
+                      <div style={{ display: 'flex', gap: 6 }}>
+                        {['#EF4444','#F59E0B','#22C55E'].map(c => <div key={c} style={{ width: 8, height: 8, borderRadius: '50%', background: c }} />)}
                       </div>
-                      <div style={{ padding: '20px 24px' }}>
-                        <div style={{ fontSize: 11, fontFamily: 'var(--font-dm-mono)', color: '#EF4444', marginBottom: 10 }}>// OBJECIÓN_{obj.id}</div>
-                        <div style={{ fontWeight: 700, fontSize: 15, color: '#F8FAFC', marginBottom: 14, lineHeight: 1.4 }}>"{obj.q}"</div>
-                        <div style={{ fontSize: 11, fontFamily: 'var(--font-dm-mono)', color: '#22C55E', marginBottom: 10 }}>// RESPUESTA VOKO</div>
-                        <div style={{ fontSize: 14, color: '#94A3B8', lineHeight: 1.7, borderLeft: '2px solid rgba(99,102,241,0.3)', paddingLeft: 14 }}>{obj.a}</div>
-                      </div>
+                      <span style={{ fontSize: 10, fontFamily: 'var(--font-dm-mono)', color: '#475569' }}>objecion_{obj.id}.md</span>
                     </div>
-                  </AnimatedCard>
+                    <div style={{ padding: '20px 24px' }}>
+                      <div style={{ fontSize: 11, fontFamily: 'var(--font-dm-mono)', color: '#EF4444', marginBottom: 10 }}>// OBJECIÓN_{obj.id}</div>
+                      <div style={{ fontWeight: 700, fontSize: 15, color: '#F8FAFC', marginBottom: 14, lineHeight: 1.4 }}>"{obj.q}"</div>
+                      <div style={{ fontSize: 11, fontFamily: 'var(--font-dm-mono)', color: '#22C55E', marginBottom: 10 }}>// RESPUESTA VOKO</div>
+                      <div style={{ fontSize: 14, color: '#94A3B8', lineHeight: 1.7, borderLeft: '2px solid rgba(99,102,241,0.3)', paddingLeft: 14 }}>{obj.a}</div>
+                    </div>
+                  </div>
                 </ScrollReveal>
               ))}
             </div>

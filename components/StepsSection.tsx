@@ -125,13 +125,9 @@ export default function StepsSection() {
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 12 }}>
         {CANAL.map(c => (
-          <div key={c.canal} className="card-glow-outer">
-            <div className="card-glow-inner" style={{ background: 'rgba(255,255,255,0.03)', padding: '20px' }}>
-              <span className="cb cb-tl">[</span><span className="cb cb-tr">]</span>
-              <span className="cb cb-bl">[</span><span className="cb cb-br">]</span>
-              <div style={{ fontSize: 11, fontFamily: 'var(--font-dm-mono)', color: c.color, marginBottom: 12, textTransform: 'uppercase', letterSpacing: '0.15em' }}>{c.canal}</div>
-              <p style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.7, fontStyle: 'italic', margin: 0 }}>"{c.msg}"</p>
-            </div>
+          <div key={c.canal} style={{ background: 'transparent', border: `1px solid ${c.color}33`, borderRadius: 14, padding: '20px', position: 'relative' }}>
+            <div style={{ fontSize: 11, fontFamily: 'var(--font-dm-mono)', color: c.color, marginBottom: 12, textTransform: 'uppercase' as const, letterSpacing: '0.15em' }}>{c.canal}</div>
+            <p style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.7, fontStyle: 'italic', margin: 0 }}>"{c.msg}"</p>
           </div>
         ))}
       </div>
