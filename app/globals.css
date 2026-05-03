@@ -266,6 +266,17 @@ body {
   padding: 6px;
 }
 
+/* ── Video subtitles ── */
+video::cue {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: white;
+  background: rgba(0,0,0,0.75);
+  border-radius: 4px;
+  padding: 4px 8px;
+}
+
 /* ── Floating particle animations ── */
 @keyframes fp1 {
   0%, 100% { transform: translate(0,0); }
