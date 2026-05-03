@@ -348,9 +348,9 @@ export default function Home() {
         <section id="industrias" style={S.section}>
           <div style={S.container}>
             <div style={{ textAlign: 'center', marginBottom: 56 }}>
-              <h2 style={S.h2}>Funciona en cualquier dispositivo</h2>
+              <h2 style={S.h2}>Voko funciona para cualquiera que comunique por texto.</h2>
               <p style={{ ...S.muted, maxWidth: 480, margin: '0 auto' }}>
-                Teléfono, tablet, computadora. Tu diccionario personal, estilo y configuración sincronizados en todas partes.
+                Especialmente si lo hace todos los días.
               </p>
             </div>
             <IndustriasGrid />
