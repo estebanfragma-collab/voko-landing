@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --bg: #0A0A0B;
+  --bg: #080A08;
   --indigo: #6366F1;
   --indigo2: #818CF8;
   --violet: #A78BFA;
@@ -19,7 +19,7 @@
 * { box-sizing: border-box; }
 
 body {
-  background: #0A0A0B;
+  background: #080A08;
   color: #F8FAFC;
   font-family: var(--font-outfit), sans-serif;
   overflow-x: hidden;
