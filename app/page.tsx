@@ -263,18 +263,24 @@ export default function Home() {
         <SectionDivider />
 
         {/* ── BLOQUE 3: DOLOR ── */}
-        <section id="dolor" style={S.section}>
+        <section id="dolor" style={{ ...S.section, position: 'relative', overflow: 'hidden' }}>
+          {/* Scanlines overlay */}
+          <div style={{ position: 'absolute', inset: 0, background: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.04) 2px, rgba(0,0,0,0.04) 4px)', pointerEvents: 'none', zIndex: 0 }} />
+          {/* Vignette */}
+          <div className="section-vignette" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0 }} />
+          <div style={{ position: 'relative', zIndex: 1 }}>
           <div style={S.container}>
             <div style={{ textAlign: 'center', marginBottom: 56 }}>
               <h2 style={S.h2}>
                 El problema no es lo que dices.<br />
-                <span style={{ color: '#EF4444' }}>Es cómo lo escribes.</span>
+                <span className="glitch-red">Es cómo lo escribes.</span>
               </h2>
               <p style={{ ...S.muted, maxWidth: 580, margin: '0 auto' }}>
                 Tienes ideas brillantes. Pero cuando te sientas a escribir, pierdes horas. El tono sale mal. Los clientes no entienden. Y lo peor: pierdes dinero por cada minuto que gastas redactando en lugar de cerrar ventas, negociar o liderar.
               </p>
             </div>
             <DoloresGrid />
+          </div>
           </div>
         </section>
 

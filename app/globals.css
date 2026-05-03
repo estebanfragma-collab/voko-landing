@@ -277,6 +277,42 @@ video::cue {
   padding: 4px 8px;
 }
 
+/* ── Glitch text ── */
+@keyframes glitch {
+  0%, 88%, 100% { text-shadow: 2px 0 rgba(239,68,68,0.5), -2px 0 rgba(239,68,68,0.5); transform: none; }
+  89%  { text-shadow: -5px 0 #EF4444, 5px 0 rgba(239,68,68,0.4); transform: translateX(-3px) skewX(-3deg); }
+  91%  { text-shadow:  5px 0 #EF4444, -5px 0 rgba(239,68,68,0.4); transform: translateX(3px) skewX(3deg); }
+  93%  { text-shadow: -3px 0 #EF4444, 3px 0 rgba(239,68,68,0.4); transform: translateX(-1px); }
+  95%  { text-shadow:  3px 0 #EF4444; transform: translateX(1px); }
+  97%  { text-shadow: 2px 0 rgba(239,68,68,0.5); transform: none; }
+}
+.glitch-red {
+  color: #EF4444;
+  text-shadow: 2px 0 rgba(239,68,68,0.3), -2px 0 rgba(239,68,68,0.3);
+  animation: glitch 4s ease-in-out infinite;
+  display: inline-block;
+}
+
+/* ── Red border glow pulse ── */
+@keyframes red-glow-pulse {
+  0%, 100% { box-shadow: 0 0 6px rgba(239,68,68,0.7), 0 0 14px rgba(239,68,68,0.3); }
+  50%       { box-shadow: 0 0 16px rgba(239,68,68,1),   0 0 32px rgba(239,68,68,0.6); }
+}
+
+/* ── Card shake on hover ── */
+@keyframes card-shake {
+  0%,100% { transform: translateX(0) translateY(0); }
+  20%      { transform: translateX(-3px) translateY(-1px) rotate(-0.4deg); }
+  40%      { transform: translateX(3px) translateY(0) rotate(0.4deg); }
+  60%      { transform: translateX(-2px) translateY(1px); }
+  80%      { transform: translateX(2px) translateY(0); }
+}
+
+/* ── Section vignette ── */
+.section-vignette {
+  background: radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.55) 100%);
+}
+
 /* ── Floating particle animations ── */
 @keyframes fp1 {
   0%, 100% { transform: translate(0,0); }
