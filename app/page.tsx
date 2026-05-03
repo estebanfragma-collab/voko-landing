@@ -217,7 +217,7 @@ export default function Home() {
                 </p>
 
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, marginBottom: 24 }}>
-                  <a href="#hero-form" style={btnPrimary} className="btn-pulse">
+                  <a href="#hero-form" style={btnPrimary} className="btn-pulse btn-sweep">
                     Prueba 15 días gratis — sin tarjeta
                   </a>
                   <a href="#vsl" style={btnGhost}>
@@ -255,7 +255,7 @@ export default function Home() {
             </p>
             <VSLDashboard />
             <div style={{ textAlign: 'center', marginTop: 24 }}>
-              <a href="#hero-form" style={btnPrimary} className="btn-pulse">Probar ahora gratis →</a>
+              <a href="#hero-form" style={btnPrimary} className="btn-pulse btn-sweep">Probar ahora gratis →</a>
             </div>
           </div>
         </section>
@@ -296,7 +296,7 @@ export default function Home() {
                 <h2 style={{ ...S.h2, maxWidth: 480 }}>
                   Cuatro veces más rápido que escribir. Cuatro veces más claro. Cero fricción.
                 </h2>
-                <a href="#hero-form" style={btnPrimary} className="btn-pulse">
+                <a href="#hero-form" style={btnPrimary} className="btn-pulse btn-sweep">
                   Prueba 15 días — sin tarjeta
                 </a>
               </div>
@@ -405,7 +405,7 @@ export default function Home() {
                 <h2 style={{ ...S.h2, maxWidth: 440 }}>
                   Tu competidor ya envió el mensaje. ¿Y tú?
                 </h2>
-                <a href="#hero-form" style={btnPrimary} className="btn-pulse">
+                <a href="#hero-form" style={btnPrimary} className="btn-pulse btn-sweep">
                   Activar Voko gratis ahora →
                 </a>
               </div>
@@ -507,7 +507,7 @@ export default function Home() {
               <p style={{ fontFamily: 'var(--font-dm-serif)', fontSize: 22, color: '#F8FAFC', marginBottom: 24 }}>
                 Todo esto por <span style={{ color: '#6366F1' }}>$5.99/mes</span>
               </p>
-              <a href="#hero-form" style={{ ...btnPrimary, fontSize: 17, padding: '16px 40px' }} className="btn-pulse">
+              <a href="#hero-form" style={{ ...btnPrimary, fontSize: 17, padding: '16px 40px' }} className="btn-pulse btn-sweep">
                 Activar Pro después del trial
               </a>
             </div>
@@ -556,7 +556,7 @@ export default function Home() {
               Prueba 15 días gratis. Sin tarjeta. Si no ves la diferencia en los primeros 3 mensajes, cancela. Pero la vas a ver.
             </p>
 
-            <a href="#hero-form" style={{ ...btnPrimary, fontSize: 18, padding: '18px 48px', borderRadius: 12 }} className="btn-pulse">
+            <a href="#hero-form" style={{ ...btnPrimary, fontSize: 18, padding: '18px 48px', borderRadius: 12 }} className="btn-cta">
               Activar 15 días gratis ahora
             </a>
 

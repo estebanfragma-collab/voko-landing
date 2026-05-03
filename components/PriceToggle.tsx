@@ -22,6 +22,7 @@ export default function PriceToggle() {
     ...cardBase,
     border: '2px solid rgba(99,102,241,0.8)',
     background: 'rgba(99,102,241,0.08)',
+    overflow: 'hidden',
   }
 
   return (
@@ -73,7 +74,7 @@ export default function PriceToggle() {
           <button
             onClick={scrollToForm}
             style={{
-              width: '100%', padding: '12px', borderRadius: 10,
+              width: '100%', padding: '12px', borderRadius: 10, position: 'relative', overflow: 'hidden',
               background: 'transparent', border: '1px solid rgba(255,255,255,0.12)',
               color: '#F8FAFC', fontWeight: 600, fontSize: 14, cursor: 'pointer',
             }}
@@ -84,6 +85,17 @@ export default function PriceToggle() {
 
         {/* Pro */}
         <div style={cardPro}>
+          {/* Aurora background */}
+          <div style={{
+            position: 'absolute',
+            width: '220%', height: '220%',
+            top: '-60%', left: '-60%',
+            background: 'radial-gradient(ellipse 55% 40% at 45% 40%, rgba(99,102,241,0.22), rgba(167,139,250,0.14) 35%, rgba(34,211,238,0.07) 60%, transparent 80%)',
+            animation: 'aurora-drift 7s ease-in-out infinite',
+            pointerEvents: 'none',
+            zIndex: 0,
+          }} />
+          <div style={{ position: 'relative', zIndex: 1 }}>
           <span style={{
             position: 'absolute', top: -12, right: 20,
             background: 'linear-gradient(135deg, #6366F1, #A78BFA)',
@@ -114,7 +126,7 @@ export default function PriceToggle() {
           </ul>
           <button
             onClick={scrollToForm}
-            className="btn-pulse"
+            className="btn-pulse btn-sweep"
             style={{
               width: '100%', padding: '13px', borderRadius: 10,
               background: 'linear-gradient(135deg, #6366F1, #A78BFA)',
@@ -123,6 +135,7 @@ export default function PriceToggle() {
           >
             Continuar con Pro →
           </button>
+          </div>{/* end z-index wrapper */}
         </div>
       </div>
 

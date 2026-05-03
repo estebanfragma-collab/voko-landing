@@ -313,6 +313,66 @@ video::cue {
   background: radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.55) 100%);
 }
 
+/* ── Button light sweep ── */
+@keyframes btn-sweep {
+  0%   { transform: translateX(-200%) skewX(-15deg); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translateX(600%) skewX(-15deg); opacity: 0; }
+}
+.btn-sweep {
+  position: relative;
+  overflow: hidden;
+}
+.btn-sweep::after {
+  content: '';
+  position: absolute;
+  top: -20%; left: 0;
+  width: 30%;
+  height: 140%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.28), rgba(255,255,255,0.1), transparent);
+  animation: btn-sweep 2.4s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 2;
+  border-radius: 0;
+}
+
+/* ── CTA button — fast sweep + pulsing outer glow ── */
+@keyframes btn-cta-sweep {
+  0%   { transform: translateX(-200%) skewX(-12deg); opacity: 0; }
+  8%   { opacity: 1; }
+  92%  { opacity: 1; }
+  100% { transform: translateX(700%) skewX(-12deg); opacity: 0; }
+}
+@keyframes cta-glow-pulse {
+  0%, 100% { box-shadow: 0 0 24px rgba(99,102,241,0.55), 0 0 48px rgba(99,102,241,0.2); }
+  50%       { box-shadow: 0 0 52px rgba(99,102,241,0.95), 0 0 100px rgba(99,102,241,0.45), 0 0 150px rgba(167,139,250,0.2); }
+}
+.btn-cta {
+  position: relative;
+  overflow: hidden;
+  animation: cta-glow-pulse 1.6s ease-in-out infinite;
+}
+.btn-cta::after {
+  content: '';
+  position: absolute;
+  top: -20%; left: 0;
+  width: 35%;
+  height: 140%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), rgba(255,255,255,0.15), transparent);
+  animation: btn-cta-sweep 1.5s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ── Pro card aurora drift ── */
+@keyframes aurora-drift {
+  0%   { transform: translate(-30%, -20%) rotate(0deg); }
+  33%  { transform: translate(15%, 15%) rotate(120deg); }
+  66%  { transform: translate(-15%, 25%) rotate(240deg); }
+  100% { transform: translate(-30%, -20%) rotate(360deg); }
+}
+
 /* ── Floating particle animations ── */
 @keyframes fp1 {
   0%, 100% { transform: translate(0,0); }
