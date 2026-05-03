@@ -1,58 +1,60 @@
 'use client'
-import { useEffect, useRef } from 'react'
+import { useEffect } from 'react'
 
-export default function MatrixRain() {
-  const canvasRef = useRef<HTMLCanvasElement>(null)
-
+const MatrixRain = () => {
   useEffect(() => {
-    const canvas = canvasRef.current
-    if (!canvas) return
-    const ctx = canvas.getContext('2d')
-    if (!ctx) return
+    const canvas = document.getElementById('matrix') as HTMLCanvasElement
+    const ctx = canvas.getContext('2d')!
 
-    const resize = () => {
+    canvas.width = window.innerWidth
+    canvas.height = window.innerHeight
+
+    window.addEventListener('resize', () => {
       canvas.width = window.innerWidth
       canvas.height = window.innerHeight
-    }
-    resize()
-    window.addEventListener('resize', resize)
+    })
 
-    const chars = '01'
     const fontSize = 16
-    const columns = Math.floor(canvas.width / fontSize)
-    const drops: number[] = Array(columns).fill(1)
+    const cols = Math.floor(canvas.width / fontSize)
+    const drops = Array(cols).fill(1)
 
-    const draw = () => {
-      ctx.fillStyle = 'rgba(8,10,8,0.03)'
+    function draw() {
+      ctx.fillStyle = 'rgba(8, 10, 8, 0.03)'
       ctx.fillRect(0, 0, canvas.width, canvas.height)
-      drops.forEach((y, i) => {
-        const bright = Math.random() > 0.9
-        ctx.fillStyle = bright ? '#84CC16' : 'rgba(132,204,22,0.4)'
-        ctx.font = `${fontSize}px monospace`
-        const char = chars[Math.floor(Math.random() * chars.length)]
-        ctx.fillText(char, i * fontSize, y * fontSize)
-        if (y * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0
+
+      ctx.fillStyle = '#84CC16'
+      ctx.font = `bold ${fontSize}px 'Courier New', monospace`
+
+      for (let i = 0; i < drops.length; i++) {
+        const char = Math.random() > 0.5 ? '1' : '0'
+        ctx.fillText(char, i * fontSize, drops[i] * fontSize)
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0
+        }
         drops[i]++
-      })
+      }
     }
 
-    const interval = setInterval(draw, 40)
-    return () => {
-      clearInterval(interval)
-      window.removeEventListener('resize', resize)
-    }
+    const interval = setInterval(draw, 35)
+    return () => clearInterval(interval)
   }, [])
 
   return (
     <canvas
-      ref={canvasRef}
+      id="matrix"
       style={{
-        position: 'fixed', top: 0, left: 0,
-        width: '100%', height: '100%',
-        pointerEvents: 'none',
-        opacity: 0.15,
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
         zIndex: 0,
+        pointerEvents: 'none',
+        opacity: 0.18,
       }}
     />
   )
 }
+
+export default MatrixRain
