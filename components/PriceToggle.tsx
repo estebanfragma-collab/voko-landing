@@ -11,8 +11,8 @@ export default function PriceToggle() {
   }
 
   const cardBase: React.CSSProperties = {
-    background: 'rgba(255,255,255,0.03)',
-    border: '1px solid rgba(255,255,255,0.08)',
+    background: 'rgba(255,255,255,0.04)',
+    border: '1px solid rgba(255,255,255,0.2)',
     borderRadius: 16,
     padding: '32px 28px',
     position: 'relative',
@@ -20,8 +20,8 @@ export default function PriceToggle() {
 
   const cardPro: React.CSSProperties = {
     ...cardBase,
-    border: '2px solid #6366F1',
-    background: 'rgba(99,102,241,0.06)',
+    border: '2px solid rgba(99,102,241,0.8)',
+    background: 'rgba(99,102,241,0.08)',
   }
 
   return (

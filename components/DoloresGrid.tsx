@@ -98,8 +98,8 @@ function ErrorCard({ d, dropped, expanded, setExpanded }: {
       onMouseEnter={handleMouseEnter}
       style={{
         position: 'relative',
-        background: 'linear-gradient(135deg, rgba(60,0,0,0.22) 0%, rgba(2,8,24,0.93) 55%)',
-        border: '1px solid rgba(239,68,68,0.15)',
+        background: 'rgba(239,68,68,0.05)',
+        border: '1px solid rgba(239,68,68,0.2)',
         borderLeft: '3px solid #EF4444',
         borderRadius: 14,
         overflow: 'hidden',

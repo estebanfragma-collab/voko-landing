@@ -3,7 +3,7 @@ import { ReactNode, CSSProperties } from 'react'
 
 export default function AnimatedCard({
   children,
-  bg = 'rgba(2,8,24,0.85)',
+  bg = 'rgba(255,255,255,0.03)',
   style,
   innerStyle,
 }: {

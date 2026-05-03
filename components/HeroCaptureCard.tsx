@@ -4,7 +4,7 @@ import HeroForm from '@/components/HeroForm'
 export default function HeroCaptureCard() {
   return (
     <div className="card-glow-outer card-glow-cyan" style={{ borderRadius: 18 }}>
-      <div className="card-glow-inner" style={{ background: 'rgba(5,5,8,0.96)', borderRadius: 17 }}>
+      <div className="card-glow-inner" style={{ background: 'rgba(2,8,24,0.6)', borderRadius: 17 }}>
         {/* Corner brackets — cyan */}
         <span className="cb cb-tl" style={{ color: 'rgba(34,211,238,0.4)', fontSize: 11 }}>[</span>
         <span className="cb cb-tr" style={{ color: 'rgba(34,211,238,0.4)', fontSize: 11 }}>]</span>

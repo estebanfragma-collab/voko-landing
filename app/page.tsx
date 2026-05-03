@@ -161,7 +161,7 @@ export default function Home() {
         <nav style={{
           position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
           backdropFilter: 'blur(20px)',
-          background: 'rgba(2,8,24,0.85)',
+          background: 'rgba(2,8,24,0.7)',
           borderBottom: '1px solid rgba(255,255,255,0.06)',
         }}>
           <div style={{ ...S.container, display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 64 }}>
@@ -285,7 +285,7 @@ export default function Home() {
         </section>
 
         {/* ── BLOQUE 4: BANNER 1 ── */}
-        <section style={{ padding: '0', position: 'relative', borderTop: '1px solid rgba(99,102,241,0.12)', borderBottom: '1px solid rgba(99,102,241,0.12)', background: 'rgba(99,102,241,0.04)' }}>
+        <section style={{ padding: '0', position: 'relative', borderTop: '1px solid rgba(99,102,241,0.12)', borderBottom: '1px solid rgba(99,102,241,0.12)', background: 'rgba(2,8,24,0.4)' }}>
           <div style={S.container}>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center', padding: '64px 0' }}>
               <div>
@@ -358,7 +358,7 @@ export default function Home() {
         </section>
 
         {/* ── BLOQUE 8: BASE DE CONOCIMIENTO ── */}
-        <section style={{ padding: '0', borderTop: '1px solid rgba(99,102,241,0.12)', borderBottom: '1px solid rgba(99,102,241,0.12)', background: 'rgba(99,102,241,0.04)' }}>
+        <section style={{ padding: '0', borderTop: '1px solid rgba(99,102,241,0.12)', borderBottom: '1px solid rgba(99,102,241,0.12)', background: 'rgba(2,8,24,0.4)' }}>
           <div style={S.container}>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center', padding: '64px 0' }}>
               <div>
@@ -479,7 +479,7 @@ export default function Home() {
 
             {/* Kelo section */}
             <ScrollReveal>
-              <div style={{ background: 'rgba(99,102,241,0.05)', border: '1px solid rgba(99,102,241,0.2)', borderRadius: 16, padding: '40px', marginBottom: 48 }}>
+              <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(99,102,241,0.2)', borderRadius: 16, padding: '40px', marginBottom: 48 }}>
                 <h3 style={{ fontFamily: 'var(--font-dm-serif)', fontSize: 28, color: '#F8FAFC', marginBottom: 16 }}>¿Qué es Kelo.lat?</h3>
                 <p style={{ ...S.muted, marginBottom: 24, maxWidth: 640 }}>
                   Kelo es un resumidor de reuniones impulsado por IA. Mientras hablas en una llamada, Kelo escucha, entiende y genera automáticamente notas profesionales con los puntos clave, acuerdos y tareas pendientes.
