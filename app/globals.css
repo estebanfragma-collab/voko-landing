@@ -99,3 +99,115 @@ body {
   background: rgba(99,102,241,0.05);
 }
 
+/* ── Animated card border ── */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.card-glow-outer {
+  position: relative;
+  padding: 1px;
+  border-radius: 14px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  display: flex;
+}
+
+.card-glow-outer::before {
+  content: '';
+  position: absolute;
+  inset: -50%;
+  background: conic-gradient(from 0deg, transparent 58%, rgba(99,102,241,0.85), rgba(167,139,250,0.55), rgba(34,211,238,0.3), transparent);
+  animation: spin-slow 4s linear infinite;
+  z-index: 0;
+}
+
+.card-glow-outer:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 32px rgba(99,102,241,0.28), 0 0 64px rgba(99,102,241,0.1);
+}
+
+.card-glow-inner {
+  position: relative;
+  z-index: 1;
+  border-radius: 13px;
+  flex: 1;
+}
+
+/* Corner brackets inside card-glow-inner */
+.cb {
+  position: absolute;
+  font-size: 9px;
+  font-family: 'DM Mono', monospace;
+  color: rgba(99,102,241,0.28);
+  line-height: 1;
+  z-index: 2;
+  pointer-events: none;
+  transition: color 0.3s;
+  user-select: none;
+}
+.card-glow-outer:hover .cb { color: rgba(99,102,241,0.85); }
+.cb-tl { top: 5px; left: 8px; }
+.cb-tr { top: 5px; right: 8px; }
+.cb-bl { bottom: 5px; left: 8px; }
+.cb-br { bottom: 5px; right: 8px; }
+
+/* ── Button primary hover ── */
+.btn-primary {
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 24px rgba(99,102,241,0.45);
+}
+
+/* ── Scanlines ── */
+.scanlines {
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.025) 2px,
+    rgba(0,0,0,0.025) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Section divider ── */
+@keyframes draw-line {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(99,102,241,0.55), rgba(167,139,250,0.35), transparent);
+  width: 0;
+}
+.section-divider.drawn {
+  animation: draw-line 1.2s ease forwards;
+}
+
+/* ── Floating particle animations ── */
+@keyframes fp1 {
+  0%, 100% { transform: translate(0,0); }
+  33%       { transform: translate(14px,-22px); }
+  66%       { transform: translate(-10px,10px); }
+}
+@keyframes fp2 {
+  0%, 100% { transform: translate(0,0); }
+  33%       { transform: translate(-18px,14px); }
+  66%       { transform: translate(12px,-8px); }
+}
+@keyframes fp3 {
+  0%, 100% { transform: translate(0,0); }
+  50%       { transform: translate(8px,-26px); }
+}
+@keyframes fp4 {
+  0%, 100% { transform: translate(0,0); }
+  40%       { transform: translate(-14px,-12px); }
+  80%       { transform: translate(10px,8px); }
+}

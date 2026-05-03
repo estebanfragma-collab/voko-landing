@@ -6,6 +6,13 @@ import PriceToggle from '@/components/PriceToggle'
 import FaqAccordion from '@/components/FaqAccordion'
 import HeroForm from '@/components/HeroForm'
 import VSLDashboard from '@/components/VSLDashboard'
+import AnimatedCard from '@/components/AnimatedCard'
+import FloatingParticles from '@/components/FloatingParticles'
+import SectionDivider from '@/components/SectionDivider'
+import DoloresGrid from '@/components/DoloresGrid'
+import StepsSection from '@/components/StepsSection'
+import TestimonialsSection from '@/components/TestimonialsSection'
+import IndustriasGrid from '@/components/IndustriasGrid'
 
 // ─────────────────────────────────────────────
 // TERMINAL LINES
@@ -145,6 +152,7 @@ export default function Home() {
   return (
     <>
       <MatrixRain />
+      <div className="scanlines" />
       <div style={{ position: 'relative', zIndex: 10, minHeight: '100vh' }}>
 
         {/* ── NAV ── */}
@@ -177,6 +185,7 @@ export default function Home() {
 
         {/* ── BLOQUE 1: HERO ── */}
         <header style={{ paddingTop: 64, minHeight: '100vh', display: 'flex', alignItems: 'center', position: 'relative', overflow: 'hidden' }}>
+          <FloatingParticles />
           <div style={{
             position: 'absolute', top: '20%', left: '50%', transform: 'translateX(-50%)',
             width: '80%', height: '60%',
@@ -265,6 +274,8 @@ export default function Home() {
           </div>
         </section>
 
+        <SectionDivider />
+
         {/* ── BLOQUE 3: DOLOR ── */}
         <section id="dolor" style={S.section}>
           <div style={S.container}>
@@ -277,31 +288,7 @@ export default function Home() {
                 Tienes ideas brillantes. Pero cuando te sientas a escribir, pierdes horas. El tono sale mal. Los clientes no entienden. Y lo peor: pierdes dinero por cada minuto que gastas redactando en lugar de cerrar ventas, negociar o liderar.
               </p>
             </div>
-
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 12 }}>
-              {dolores.map((d) => (
-                <ScrollReveal key={d.code}>
-                  <div style={{ background: 'rgba(8,10,8,0.85)', border: '1px solid rgba(239,68,68,0.15)', borderRadius: 14, overflow: 'hidden' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 16px', borderBottom: '1px solid rgba(239,68,68,0.1)', background: 'rgba(239,68,68,0.04)' }}>
-                      <div style={{ display: 'flex', gap: 6 }}>
-                        <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#EF4444' }} />
-                        <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#F59E0B' }} />
-                        <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#22C55E' }} />
-                      </div>
-                      <span style={{ fontSize: 10, fontFamily: 'var(--font-dm-mono)', color: '#EF4444' }}>{d.code}</span>
-                    </div>
-                    <div style={{ padding: '20px' }}>
-                      <div style={{ fontSize: 26, marginBottom: 12 }}>{d.emoji}</div>
-                      <div style={{ fontWeight: 700, fontSize: 15, color: '#F8FAFC', marginBottom: 16, lineHeight: 1.4 }}>{d.title}</div>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 6, paddingTop: 12, borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-                        <div style={{ width: 5, height: 5, borderRadius: '50%', background: '#EF4444' }} />
-                        <span style={{ fontSize: 10, fontFamily: 'var(--font-dm-mono)', color: '#EF4444' }}>Impacto: {d.impact}</span>
-                      </div>
-                    </div>
-                  </div>
-                </ScrollReveal>
-              ))}
-            </div>
+            <DoloresGrid />
           </div>
         </section>
 
@@ -326,6 +313,8 @@ export default function Home() {
           </div>
         </section>
 
+        <SectionDivider />
+
         {/* ── BLOQUE 5: SOLUCIÓN ── */}
         <section id="como-funciona" style={S.section}>
           <div style={S.container}>
@@ -338,70 +327,11 @@ export default function Home() {
                 Voko convierte tu voz en texto profesional al instante. Sin esperar. Sin editar. Sin perder dinero.
               </p>
             </div>
-
-            {/* Steps */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 12, marginBottom: 56 }}>
-              {[
-                {
-                  num: 'PASO_01', icon: '🎤', title: 'Dicta como hablas',
-                  desc: 'Sin filtro. Sin pensar en gramática. Voko entiende tu voz, tu contexto, tu urgencia.',
-                  lines: ['input crudo → recibido ✓'],
-                },
-                {
-                  num: 'PASO_02', icon: '⚡', title: 'Voko convierte en profesional',
-                  desc: 'Transcribe, edita y formatea al instante. Elimina relleno, corrige tono, añade estructura. Todo automático.',
-                  lines: ['transcribiendo...', 'editando tono...', '→ texto listo ✓'],
-                },
-                {
-                  num: 'PASO_03', icon: '✅', title: 'Envía y cierra',
-                  desc: 'Texto listo. Profesional. Con tu voz. Copia, pega y sigue vendiendo. Sin más esperas.',
-                  lines: ['→ copiado al portapapeles ✓'],
-                },
-              ].map((step) => (
-                <ScrollReveal key={step.num}>
-                  <div style={{ background: 'rgba(8,10,8,0.85)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 14, overflow: 'hidden' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 16px', borderBottom: '1px solid rgba(255,255,255,0.05)', background: 'rgba(255,255,255,0.02)' }}>
-                      <div style={{ display: 'flex', gap: 6 }}>
-                        <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#EF4444' }} />
-                        <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#F59E0B' }} />
-                        <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#22C55E' }} />
-                      </div>
-                      <span style={{ fontSize: 10, fontFamily: 'var(--font-dm-mono)', color: '#475569' }}>{step.num}.sh</span>
-                    </div>
-                    <div style={{ padding: '20px' }}>
-                      <div style={{ fontSize: 28, marginBottom: 12 }}>{step.icon}</div>
-                      <div style={{ fontWeight: 700, fontSize: 16, color: '#F8FAFC', marginBottom: 8 }}>{step.title}</div>
-                      <div style={{ fontSize: 13, color: '#475569', lineHeight: 1.6, marginBottom: 14 }}>{step.desc}</div>
-                      {step.lines.map((l, i) => (
-                        <div key={i} style={{ fontSize: 12, fontFamily: 'var(--font-dm-mono)', color: l.includes('✓') ? '#22C55E' : '#94A3B8', lineHeight: 1.8 }}>{l}</div>
-                      ))}
-                    </div>
-                  </div>
-                </ScrollReveal>
-              ))}
-            </div>
-
-            {/* Tonos por canal */}
-            <div style={{ textAlign: 'center', marginBottom: 32 }}>
-              <h3 style={{ fontFamily: 'var(--font-dm-serif)', fontSize: 28, color: '#F8FAFC', marginBottom: 12 }}>Se adapta a cada contexto</h3>
-              <p style={{ ...S.muted, maxWidth: 560, margin: '0 auto' }}>
-                Voko detecta dónde estás escribiendo y ajusta el tono automáticamente. WhatsApp, Email, LinkedIn. Siempre suena como tú, nunca como un robot.
-              </p>
-            </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 12 }}>
-              {[
-                { canal: 'WhatsApp', color: '#22C55E', msg: 'Ey, necesito que me confirmes si recibiste la factura. Cuando tengas un momento.' },
-                { canal: 'Email', color: '#6366F1', msg: 'Estimado, quisiera confirmar la recepción de la factura. Agradezco su pronta respuesta.' },
-                { canal: 'LinkedIn', color: '#818CF8', msg: 'Hola, espero que estés bien. Me gustaría confirmar los detalles de la factura enviada.' },
-              ].map(c => (
-                <div key={c.canal} style={{ background: 'rgba(8,10,8,0.85)', border: `1px solid ${c.color}25`, borderRadius: 12, padding: '20px' }}>
-                  <div style={{ fontSize: 11, fontFamily: 'var(--font-dm-mono)', color: c.color, marginBottom: 12, textTransform: 'uppercase', letterSpacing: '0.15em' }}>{c.canal}</div>
-                  <p style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.7, fontStyle: 'italic' }}>"{c.msg}"</p>
-                </div>
-              ))}
-            </div>
+            <StepsSection />
           </div>
         </section>
+
+        <SectionDivider />
 
         {/* ── BLOQUE 6: PRUEBA SOCIAL ── */}
         <section style={S.section}>
@@ -409,39 +339,18 @@ export default function Home() {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 12, marginBottom: 56 }}>
               {metrics.map(m => (
                 <ScrollReveal key={m.label}>
-                  <div style={{ background: 'rgba(8,10,8,0.85)', border: `1px solid ${m.color}22`, borderRadius: 14, padding: '28px 24px', textAlign: 'center' }}>
+                  <AnimatedCard innerStyle={{ padding: '28px 24px', textAlign: 'center' }}>
                     <div style={{ fontWeight: 800, fontSize: 44, color: m.color, letterSpacing: '-2px', lineHeight: 1, marginBottom: 8 }}>{m.value}</div>
                     <div style={{ fontSize: 13, color: '#94A3B8' }}>{m.label}</div>
-                  </div>
+                  </AnimatedCard>
                 </ScrollReveal>
               ))}
             </div>
-
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 16 }}>
-              {testimonials.map((t) => (
-                <ScrollReveal key={t.name}>
-                  <div style={{ background: 'rgba(8,10,8,0.85)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 14, padding: '24px' }}>
-                    <div style={{ display: 'flex', gap: 4, marginBottom: 16 }}>
-                      {[...Array(5)].map((_, i) => <span key={i} style={{ color: '#F59E0B', fontSize: 13 }}>★</span>)}
-                    </div>
-                    <div style={{ borderLeft: '3px solid #EF4444', paddingLeft: 12, marginBottom: 12 }}>
-                      <div style={{ fontSize: 11, fontFamily: 'var(--font-dm-mono)', color: '#EF4444', marginBottom: 4 }}>ANTES</div>
-                      <p style={{ fontSize: 13, color: '#475569', lineHeight: 1.6, fontStyle: 'italic' }}>"{t.before}"</p>
-                    </div>
-                    <div style={{ borderLeft: '3px solid #22C55E', paddingLeft: 12, marginBottom: 20 }}>
-                      <div style={{ fontSize: 11, fontFamily: 'var(--font-dm-mono)', color: '#22C55E', marginBottom: 4 }}>DESPUÉS</div>
-                      <p style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.6, fontStyle: 'italic' }}>"{t.after}"</p>
-                    </div>
-                    <div>
-                      <div style={{ fontWeight: 600, fontSize: 14, color: '#F8FAFC' }}>{t.name}</div>
-                      <div style={{ fontSize: 12, color: '#475569' }}>{t.role}</div>
-                    </div>
-                  </div>
-                </ScrollReveal>
-              ))}
-            </div>
+            <TestimonialsSection />
           </div>
         </section>
+
+        <SectionDivider />
 
         {/* ── BLOQUE 7: INDUSTRIAS ── */}
         <section id="industrias" style={S.section}>
@@ -452,21 +361,7 @@ export default function Home() {
                 Teléfono, tablet, computadora. Tu diccionario personal, estilo y configuración sincronizados en todas partes.
               </p>
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 12 }}>
-              {industrias.map((ind) => (
-                <ScrollReveal key={ind.name}>
-                  <div style={{ background: 'rgba(8,10,8,0.85)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 14, padding: '24px' }}>
-                    <div style={{ fontSize: 28, marginBottom: 10 }}>{ind.icon}</div>
-                    <div style={{ fontWeight: 700, fontSize: 17, color: '#F8FAFC', marginBottom: 12 }}>{ind.name}</div>
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
-                      {ind.tags.map(tag => (
-                        <span key={tag} style={{ fontSize: 11, fontFamily: 'var(--font-dm-mono)', padding: '3px 10px', borderRadius: 4, background: 'rgba(99,102,241,0.1)', border: '1px solid rgba(99,102,241,0.2)', color: '#818CF8' }}>{tag}</span>
-                      ))}
-                    </div>
-                  </div>
-                </ScrollReveal>
-              ))}
-            </div>
+            <IndustriasGrid />
           </div>
         </section>
 
@@ -539,22 +434,22 @@ export default function Home() {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(440px, 1fr))', gap: 12 }}>
               {objeciones.map(obj => (
                 <ScrollReveal key={obj.id}>
-                  <div style={{ background: 'rgba(8,10,8,0.85)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 14, overflow: 'hidden' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', padding: '10px 16px', borderBottom: '1px solid rgba(255,255,255,0.05)', background: 'rgba(255,255,255,0.02)' }}>
-                      <div style={{ display: 'flex', gap: 6 }}>
-                        <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#EF4444' }} />
-                        <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#F59E0B' }} />
-                        <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#22C55E' }} />
+                  <AnimatedCard>
+                    <div style={{ overflow: 'hidden', borderRadius: 13 }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', padding: '10px 16px', borderBottom: '1px solid rgba(255,255,255,0.05)', background: 'rgba(255,255,255,0.02)' }}>
+                        <div style={{ display: 'flex', gap: 6 }}>
+                          {['#EF4444','#F59E0B','#22C55E'].map(c => <div key={c} style={{ width: 8, height: 8, borderRadius: '50%', background: c }} />)}
+                        </div>
+                        <span style={{ fontSize: 10, fontFamily: 'var(--font-dm-mono)', color: '#475569' }}>objecion_{obj.id}.md</span>
                       </div>
-                      <span style={{ fontSize: 10, fontFamily: 'var(--font-dm-mono)', color: '#475569' }}>objecion_{obj.id}.md</span>
+                      <div style={{ padding: '20px 24px' }}>
+                        <div style={{ fontSize: 11, fontFamily: 'var(--font-dm-mono)', color: '#EF4444', marginBottom: 10 }}>// OBJECIÓN_{obj.id}</div>
+                        <div style={{ fontWeight: 700, fontSize: 15, color: '#F8FAFC', marginBottom: 14, lineHeight: 1.4 }}>"{obj.q}"</div>
+                        <div style={{ fontSize: 11, fontFamily: 'var(--font-dm-mono)', color: '#22C55E', marginBottom: 10 }}>// RESPUESTA VOKO</div>
+                        <div style={{ fontSize: 14, color: '#94A3B8', lineHeight: 1.7, borderLeft: '2px solid rgba(99,102,241,0.3)', paddingLeft: 14 }}>{obj.a}</div>
+                      </div>
                     </div>
-                    <div style={{ padding: '20px 24px' }}>
-                      <div style={{ fontSize: 11, fontFamily: 'var(--font-dm-mono)', color: '#EF4444', marginBottom: 10 }}>// OBJECIÓN_{obj.id}</div>
-                      <div style={{ fontWeight: 700, fontSize: 15, color: '#F8FAFC', marginBottom: 14, lineHeight: 1.4 }}>"{obj.q}"</div>
-                      <div style={{ fontSize: 11, fontFamily: 'var(--font-dm-mono)', color: '#22C55E', marginBottom: 10 }}>// RESPUESTA VOKO</div>
-                      <div style={{ fontSize: 14, color: '#94A3B8', lineHeight: 1.7, borderLeft: '2px solid rgba(99,102,241,0.3)', paddingLeft: 14 }}>{obj.a}</div>
-                    </div>
-                  </div>
+                  </AnimatedCard>
                 </ScrollReveal>
               ))}
             </div>
@@ -571,21 +466,21 @@ export default function Home() {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 12, marginBottom: 48 }}>
               {bonos.map((b, i) => (
                 <ScrollReveal key={b.title} delay={i * 80}>
-                  <div style={{ background: 'rgba(8,10,8,0.85)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 14, overflow: 'hidden' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 16px', borderBottom: '1px solid rgba(255,255,255,0.05)', background: 'rgba(255,255,255,0.02)' }}>
-                      <div style={{ display: 'flex', gap: 6 }}>
-                        <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#EF4444' }} />
-                        <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#F59E0B' }} />
-                        <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#22C55E' }} />
+                  <AnimatedCard>
+                    <div style={{ overflow: 'hidden', borderRadius: 13 }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 16px', borderBottom: '1px solid rgba(255,255,255,0.05)', background: 'rgba(255,255,255,0.02)' }}>
+                        <div style={{ display: 'flex', gap: 6 }}>
+                          {['#EF4444','#F59E0B','#22C55E'].map(c => <div key={c} style={{ width: 8, height: 8, borderRadius: '50%', background: c }} />)}
+                        </div>
+                        <span style={{ fontSize: 9, fontFamily: 'var(--font-dm-mono)', color: '#22C55E', background: 'rgba(34,197,94,0.1)', padding: '2px 8px', borderRadius: 4, letterSpacing: '0.1em' }}>INCLUIDO EN PRO</span>
                       </div>
-                      <span style={{ fontSize: 9, fontFamily: 'var(--font-dm-mono)', color: '#22C55E', background: 'rgba(34,197,94,0.1)', padding: '2px 8px', borderRadius: 4, letterSpacing: '0.1em' }}>INCLUIDO EN PRO</span>
+                      <div style={{ padding: '20px' }}>
+                        <div style={{ fontSize: 28, marginBottom: 12 }}>{b.icon}</div>
+                        <div style={{ fontWeight: 700, fontSize: 16, color: '#F8FAFC', marginBottom: 8 }}>{b.title}</div>
+                        <div style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.7 }}>{b.desc}</div>
+                      </div>
                     </div>
-                    <div style={{ padding: '20px' }}>
-                      <div style={{ fontSize: 28, marginBottom: 12 }}>{b.icon}</div>
-                      <div style={{ fontWeight: 700, fontSize: 16, color: '#F8FAFC', marginBottom: 8 }}>{b.title}</div>
-                      <div style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.7 }}>{b.desc}</div>
-                    </div>
-                  </div>
+                  </AnimatedCard>
                 </ScrollReveal>
               ))}
             </div>
