@@ -19,7 +19,7 @@ const MatrixRain = () => {
     const drops = Array(cols).fill(1)
 
     function draw() {
-      ctx.fillStyle = 'rgba(8, 10, 8, 0.03)'
+      ctx.fillStyle = 'rgba(2, 8, 24, 0.03)'
       ctx.fillRect(0, 0, canvas.width, canvas.height)
 
       ctx.fillStyle = '#84CC16'

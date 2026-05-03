@@ -36,7 +36,7 @@ export default function TestimonialsSection() {
         <div
           key={t.name}
           style={{
-            background: 'rgba(8,10,8,0.85)',
+            background: 'rgba(2,8,24,0.85)',
             border: `1px solid ${COLORS[ti]}22`,
             borderRadius: 14, padding: '24px',
             position: 'relative', overflow: 'hidden',

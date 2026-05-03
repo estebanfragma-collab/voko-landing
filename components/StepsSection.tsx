@@ -68,7 +68,7 @@ export default function StepsSection() {
             onMouseLeave={() => setHovered(null)}
             style={{
               position: 'relative',
-              background: 'rgba(8,10,8,0.85)',
+              background: 'rgba(2,8,24,0.85)',
               border: `1px solid ${hovered === idx ? 'rgba(99,102,241,0.5)' : 'rgba(255,255,255,0.07)'}`,
               borderRadius: 14, overflow: 'hidden',
               transition: 'border-color 0.2s, transform 0.2s, box-shadow 0.2s',
@@ -126,7 +126,7 @@ export default function StepsSection() {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 12 }}>
         {CANAL.map(c => (
           <div key={c.canal} className="card-glow-outer">
-            <div className="card-glow-inner" style={{ background: 'rgba(8,10,8,0.85)', padding: '20px' }}>
+            <div className="card-glow-inner" style={{ background: 'rgba(2,8,24,0.85)', padding: '20px' }}>
               <span className="cb cb-tl">[</span><span className="cb cb-tr">]</span>
               <span className="cb cb-bl">[</span><span className="cb cb-br">]</span>
               <div style={{ fontSize: 11, fontFamily: 'var(--font-dm-mono)', color: c.color, marginBottom: 12, textTransform: 'uppercase', letterSpacing: '0.15em' }}>{c.canal}</div>

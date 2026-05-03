@@ -52,7 +52,7 @@ export default function DoloresGrid() {
           key={d.code}
           style={{
             position: 'relative',
-            background: 'rgba(8,10,8,0.9)',
+            background: 'rgba(2,8,24,0.9)',
             border: '1px solid rgba(239,68,68,0.15)',
             borderLeft: '3px solid #EF4444',
             borderRadius: 14,

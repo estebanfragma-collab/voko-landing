@@ -93,7 +93,7 @@ const MetricCard = ({ label, value, sub, subColor, sparkColor, sparkValues }: {
   label: string; value: string; sub: string; subColor: string; sparkColor: string; sparkValues: number[]
 }) => (
   <div style={{
-    background: 'rgba(5,5,7,0.85)',
+    background: 'rgba(2,6,20,0.85)',
     border: '1px solid rgba(132,204,22,0.12)',
     borderRadius: 12, padding: '14px 16px',
     backdropFilter: 'blur(12px)', minWidth: 150,
@@ -215,7 +215,7 @@ export default function VSLDashboard() {
       </div>
 
       {/* ── Main card ── */}
-      <div style={{ borderRadius: 16, overflow: 'hidden', background: '#050507', border: '1px solid rgba(132,204,22,0.15)', boxShadow: '0 0 60px rgba(132,204,22,0.05), 0 0 120px rgba(99,102,241,0.08)' }}>
+      <div style={{ borderRadius: 16, overflow: 'hidden', background: '#020818', border: '1px solid rgba(132,204,22,0.15)', boxShadow: '0 0 60px rgba(132,204,22,0.05), 0 0 120px rgba(99,102,241,0.08)' }}>
         <GridLines />
 
         {/* Header bar */}
@@ -244,7 +244,7 @@ export default function VSLDashboard() {
           </div>
 
           {/* Center — video */}
-          <div style={{ borderRadius: 10, overflow: 'hidden', border: '1px solid rgba(99,102,241,0.2)', background: '#050507', position: 'relative' }}>
+          <div style={{ borderRadius: 10, overflow: 'hidden', border: '1px solid rgba(99,102,241,0.2)', background: '#020818', position: 'relative' }}>
             {/* Video header */}
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '8px 12px', borderBottom: '1px solid rgba(99,102,241,0.1)', background: 'rgba(99,102,241,0.04)' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
@@ -258,7 +258,7 @@ export default function VSLDashboard() {
             </div>
 
             {/* Video area */}
-            <div style={{ aspectRatio: '16/9', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'linear-gradient(135deg, rgba(5,5,7,1) 0%, rgba(10,8,20,1) 100%)', position: 'relative', flexDirection: 'column', gap: 12 }}>
+            <div style={{ aspectRatio: '16/9', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'linear-gradient(135deg, rgba(2,6,20,1) 0%, rgba(10,8,20,1) 100%)', position: 'relative', flexDirection: 'column', gap: 12 }}>
               <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(132,204,22,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(132,204,22,0.03) 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
               <div style={{ width: 64, height: 64, borderRadius: '50%', background: '#EF4444', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 0 32px rgba(239,68,68,0.5)', cursor: 'pointer', position: 'relative', zIndex: 1, flexShrink: 0 }}>
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><polygon points="6,3 20,12 6,21" /></svg>
@@ -278,7 +278,7 @@ export default function VSLDashboard() {
         <div style={{ padding: '0 12px 12px', position: 'relative', zIndex: 1 }}>
           <div style={{
             display: 'flex', alignItems: 'center', gap: 12,
-            background: 'rgba(5,5,7,0.8)',
+            background: 'rgba(2,6,20,0.8)',
             border: '1px solid rgba(132,204,22,0.08)',
             borderRadius: 10, padding: '10px 14px',
             opacity: feedVisible ? 1 : 0,

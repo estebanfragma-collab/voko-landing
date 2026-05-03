@@ -161,7 +161,7 @@ export default function Home() {
         <nav style={{
           position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
           backdropFilter: 'blur(20px)',
-          background: 'rgba(8,10,8,0.85)',
+          background: 'rgba(2,8,24,0.85)',
           borderBottom: '1px solid rgba(255,255,255,0.06)',
         }}>
           <div style={{ ...S.container, display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 64 }}>
