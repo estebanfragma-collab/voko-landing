@@ -276,13 +276,6 @@ export default function VSLDashboard() {
                 style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
               >
                 <source src="/videos/Avatar_Video_1080p.mp4" type="video/mp4" />
-                <track
-                  kind="subtitles"
-                  src="/videos/voko-subtitles.vtt"
-                  srcLang="es"
-                  label="Español"
-                  default
-                />
               </video>
 
               {/* Play button overlay — shown until user clicks */}
