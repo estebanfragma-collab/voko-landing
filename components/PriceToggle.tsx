@@ -3,8 +3,8 @@ import { useState } from 'react'
 
 export default function PriceToggle() {
   const [annual, setAnnual] = useState(false)
-  const proPrice = annual ? '4.66' : '6.99'
-  const proPeriod = annual ? '/mes · $55.90/año' : '/mes'
+  const proPrice = annual ? '3.99' : '5.99'
+  const proPeriod = annual ? '/mes · $47.92/año' : '/mes'
 
   const scrollToForm = () => {
     document.getElementById('hero-form')?.scrollIntoView({ behavior: 'smooth', block: 'center' })
@@ -28,7 +28,7 @@ export default function PriceToggle() {
     <div>
       {/* Toggle */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 16, marginBottom: 40 }}>
-        <span style={{ fontSize: 14, color: annual ? '#475569' : '#F8FAFC', fontWeight: annual ? 400 : 600 }}>Mensual</span>
+        <span style={{ fontSize: 14, color: annual ? '#475569' : '#F8FAFC', fontWeight: annual ? 400 : 600 }}>Paga mensual</span>
         <button
           onClick={() => setAnnual(!annual)}
           style={{
@@ -48,9 +48,9 @@ export default function PriceToggle() {
           }} />
         </button>
         <span style={{ fontSize: 14, color: annual ? '#F8FAFC' : '#475569', fontWeight: annual ? 600 : 400 }}>
-          Anual{' '}
+          Paga anual{' '}
           <span style={{ fontSize: 11, background: 'rgba(34,197,94,0.15)', color: '#22C55E', padding: '2px 7px', borderRadius: 100, fontFamily: 'var(--font-dm-mono)' }}>
-            2 meses gratis
+            Ahorra 2 meses
           </span>
         </span>
       </div>
@@ -59,11 +59,12 @@ export default function PriceToggle() {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 20, maxWidth: 700, margin: '0 auto' }}>
         {/* Free */}
         <div style={cardBase}>
-          <div style={{ fontSize: 11, fontFamily: 'var(--font-dm-mono)', color: '#475569', marginBottom: 8, textTransform: 'uppercase', letterSpacing: '0.15em' }}>Free</div>
+          <div style={{ fontSize: 11, fontFamily: 'var(--font-dm-mono)', color: '#475569', marginBottom: 4, textTransform: 'uppercase', letterSpacing: '0.15em' }}>Prueba 15 días</div>
+          <div style={{ fontSize: 12, color: '#475569', marginBottom: 16 }}>Acceso completo. Sin tarjeta.</div>
           <div style={{ fontSize: 48, fontWeight: 800, color: '#F8FAFC', letterSpacing: '-2px', lineHeight: 1, marginBottom: 4 }}>$0</div>
-          <div style={{ fontSize: 13, color: '#475569', marginBottom: 24 }}>/mes</div>
+          <div style={{ fontSize: 13, color: '#475569', marginBottom: 24 }}>por 15 días</div>
           <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 28px', display: 'flex', flexDirection: 'column', gap: 10 }}>
-            {['5 transformaciones/mes', 'WhatsApp y email', '3 tonos básicos', 'Sin tarjeta'].map(f => (
+            {['Ilimitado durante 15 días', '3 tonos por mensaje', 'Sin tarjeta de crédito'].map(f => (
               <li key={f} style={{ fontSize: 14, color: '#94A3B8', display: 'flex', alignItems: 'center', gap: 8 }}>
                 <span style={{ color: '#22C55E' }}>✓</span> {f}
               </li>
@@ -77,7 +78,7 @@ export default function PriceToggle() {
               color: '#F8FAFC', fontWeight: 600, fontSize: 14, cursor: 'pointer',
             }}
           >
-            Empezar gratis →
+            Activar ahora →
           </button>
         </div>
 
@@ -89,9 +90,10 @@ export default function PriceToggle() {
             color: '#fff', fontSize: 11, fontWeight: 700,
             padding: '4px 12px', borderRadius: 100,
           }}>
-            ★ Más popular
+            La que funciona
           </span>
-          <div style={{ fontSize: 11, fontFamily: 'var(--font-dm-mono)', color: '#818CF8', marginBottom: 8, textTransform: 'uppercase', letterSpacing: '0.15em' }}>Pro</div>
+          <div style={{ fontSize: 11, fontFamily: 'var(--font-dm-mono)', color: '#818CF8', marginBottom: 4, textTransform: 'uppercase', letterSpacing: '0.15em' }}>Pro</div>
+          <div style={{ fontSize: 12, color: '#475569', marginBottom: 16 }}>Después de los 15 días gratis</div>
           <div style={{ display: 'flex', alignItems: 'flex-end', gap: 4, marginBottom: 4 }}>
             <span style={{ fontSize: 48, fontWeight: 800, letterSpacing: '-2px', lineHeight: 1, background: 'linear-gradient(135deg, #6366F1, #A78BFA)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
               ${proPrice}
@@ -100,12 +102,10 @@ export default function PriceToggle() {
           <div style={{ fontSize: 13, color: '#475569', marginBottom: 24 }}>{proPeriod}</div>
           <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 28px', display: 'flex', flexDirection: 'column', gap: 10 }}>
             {[
-              'Transformaciones ilimitadas',
-              'Modo Negociación (3 versiones)',
-              'Perfil de voz personalizado',
-              'Historial completo',
-              'Todos los canales',
-              'Score de tono animado',
+              'Ilimitado. Sin límites.',
+              'Modo Negociación (cobros, reclamos)',
+              'Tu perfil de voz personalizado',
+              'Historial de todos tus mensajes',
             ].map(f => (
               <li key={f} style={{ fontSize: 14, color: '#F8FAFC', display: 'flex', alignItems: 'center', gap: 8 }}>
                 <span style={{ color: '#6366F1' }}>✓</span> {f}
@@ -121,14 +121,14 @@ export default function PriceToggle() {
               border: 'none', color: '#fff', fontWeight: 700, fontSize: 14, cursor: 'pointer',
             }}
           >
-            Activar Pro ahora →
+            Continuar con Pro →
           </button>
         </div>
       </div>
 
       {/* Guarantees */}
       <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 24, marginTop: 32 }}>
-        {['🔒 Sin contrato', 'Cancela en 1 clic', 'Datos privados', 'Soporte en español'].map(g => (
+        {['Sin contrato', 'Cancela en 1 clic', 'Datos privados', 'Soporte en español'].map(g => (
           <span key={g} style={{ fontSize: 13, color: '#475569', fontFamily: 'var(--font-dm-mono)' }}>{g}</span>
         ))}
       </div>

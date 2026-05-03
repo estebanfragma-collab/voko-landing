@@ -10,15 +10,13 @@ import HeroForm from '@/components/HeroForm'
 // TERMINAL LINES
 // ─────────────────────────────────────────────
 const terminal1Lines = [
-  '$ diagnóstico.voko --modo-rápido',
+  '> velocidad.voko --benchmark',
   '',
-  '→ Analizando patrones de comunicación...',
-  '→ Mensajes reescritos manualmente: 23/semana',
-  '→ Tiempo perdido estimado: 1.8 horas/semana',
-  '→ Relaciones afectadas por tono incorrecto: [ALTO]',
+  '→ Velocidad teclado: 45 palabras/minuto',
+  '→ Velocidad Voko: 220 palabras/minuto',
+  '→ Ganancia de tiempo: [+388%]',
   '',
-  '→ RECOMENDACIÓN: activar Voko ahora',
-  '→ _',
+  '→ ACTIVAR: Voko ahora',
 ]
 
 const terminal2Lines = [
@@ -33,61 +31,72 @@ const terminal2Lines = [
   '→ ¿Seguimos esperando? [S/N]: _',
 ]
 
+const terminalBaseLines = [
+  '$ base_conocimiento --cargar',
+  '',
+  '→ Analizando estilo de escritura...',
+  '→ Vocabulario detectado: 847 palabras',
+  '→ Tono dominante: profesional-directo',
+  '→ Modismos regionales: detectados ✓',
+  '',
+  '→ Personalización: ACTIVA ✓',
+]
+
 // ─────────────────────────────────────────────
 // DATA
 // ─────────────────────────────────────────────
 const dolores = [
-  { code: 'ERR_001', tag: 'TONE_FAIL', emoji: '😤', title: 'Le escribí molesto y arruiné la negociación', status: 'sin resolver', impact: 'crítico' },
-  { code: 'ERR_002', tag: 'TIME_LOST', emoji: '⏳', title: 'Pasé 20 minutos redactando un email de 3 líneas', status: 'sin resolver', impact: 'alto' },
-  { code: 'ERR_003', tag: 'TONE_MISMATCH', emoji: '💬', title: 'Mi WhatsApp de trabajo no suena profesional', status: 'sin resolver', impact: 'alto' },
-  { code: 'ERR_004', tag: 'MONEY_GONE', emoji: '💸', title: 'No sé cómo reclamar sin quemar la relación', status: 'sin resolver', impact: 'crítico' },
+  { code: 'TIME_LOST', emoji: '⏳', title: '45 minutos redactando un email. Podrías haber cerrado 3 ventas en ese tiempo.', impact: 'CRÍTICO' },
+  { code: 'TONE_FAIL', emoji: '😤', title: 'Suenas molesto, agresivo o demasiado formal. Pierdes clientes por cómo escribes, no por lo que dices.', impact: 'CRÍTICO' },
+  { code: 'MONEY_GONE', emoji: '💸', title: 'Cada email mal redactado cuesta dinero. Cobros rechazados, negociaciones perdidas, clientes que se van.', impact: 'CRÍTICO' },
+  { code: 'STUCK_HERE', emoji: '🧱', title: 'Escribir se convirtió en tu cuello de botella. No creces porque estás atrapado redactando.', impact: 'CRÍTICO' },
 ]
 
 const industrias = [
-  { icon: '🧑‍💼', name: 'Freelancers y consultores', tags: ['Cobro pendiente', 'Propuesta comercial', 'Seguimiento'], cmd: '$ voko --perfil=freelancer' },
-  { icon: '🏪', name: 'Dueños de negocio', tags: ['Reclamo a proveedor', 'Negociación de precio', 'Manejo de crisis'], cmd: '$ voko --perfil=negocio' },
-  { icon: '📱', name: 'Vendedores y ejecutivos', tags: ['Follow-up sin sonar desesperado', 'Objeción de precio', 'Lead frío'], cmd: '$ voko --perfil=ventas' },
-  { icon: '⚖️', name: 'Abogados y contadores', tags: ['Requerimiento formal', 'Cobro de honorarios', 'Actualización de caso'], cmd: '$ voko --perfil=juridico' },
-  { icon: '🎓', name: 'Docentes y coordinadores', tags: ['Comunicado a padres', 'Llamado de atención', 'Respuesta a queja'], cmd: '$ voko --perfil=educacion' },
-  { icon: '🏥', name: 'Profesionales de salud', tags: ['Recordatorio de cita', 'Cobro de consulta', 'Resultado delicado'], cmd: '$ voko --perfil=salud' },
+  { icon: '🧑‍💼', name: 'Freelancers y consultores', tags: ['Cobro pendiente', 'Propuesta comercial', 'Seguimiento'] },
+  { icon: '🏪', name: 'Dueños de negocio', tags: ['Reclamo a proveedor', 'Negociación de precio', 'Manejo de crisis'] },
+  { icon: '📱', name: 'Vendedores y ejecutivos', tags: ['Follow-up', 'Objeción de precio', 'Lead frío'] },
+  { icon: '⚖️', name: 'Abogados y contadores', tags: ['Requerimiento formal', 'Cobro de honorarios', 'Actualización de caso'] },
+  { icon: '🎓', name: 'Docentes y coordinadores', tags: ['Comunicado a padres', 'Llamado de atención', 'Respuesta a queja'] },
+  { icon: '🏥', name: 'Profesionales de salud', tags: ['Recordatorio de cita', 'Cobro de consulta', 'Resultado delicado'] },
 ]
 
 const objeciones = [
-  { id: '001', q: '¿Tengo que escribir bien para que funcione?', a: 'No. Dictas como hablas — desordenado, con errores, en tu dialecto. Voko entiende igual. Eso es exactamente para lo que fue diseñado.' },
-  { id: '002', q: '¿Va a sonar genérico, como todos los textos de IA?', a: 'No si usas el perfil de voz. En el onboarding defines cómo hablas tú, tu nivel de formalidad y tus frases frecuentes. El resultado suena a ti, no a un asistente corporativo.' },
-  { id: '003', q: '¿Funciona bien en español latino? ¿Va a escribirme "vosotros"?', a: 'Fue calibrado para LATAM. Ecuador, México, Colombia, Argentina. No va a escribirte "ordenador" ni "vosotros". Habla como tú.' },
-  { id: '004', q: '¿Es seguro? ¿Mis mensajes se guardan en algún servidor?', a: 'Tus mensajes son tuyos. No los vendemos, no los entrenamos, no los compartimos. Puedes borrar tu historial cuando quieras.' },
-  { id: '005', q: '¿Vale la pena pagar $6.99 si puedo usar ChatGPT gratis?', a: 'ChatGPT no detecta tu emoción. No tiene Modo Negociación. No recuerda tu perfil de voz. No está optimizado para mensajes cortos en español. Voko hace una cosa y la hace bien.' },
+  { id: '001', q: '¿Y si Voko no entiende mi acento o forma de hablar?', a: 'Voko aprende de TI. Cuanto más lo uses, mejor entiende tu voz, tu velocidad, tu contexto. Es como tener un asistente que te conoce.' },
+  { id: '002', q: '¿Va a sonar como un robot? ¿Perderé mi personalidad?', a: 'No. Voko mantiene tu voz, tu tono, tu personalidad. Solo elimina los errores, la prisa y la rabia. Suenas como tú, pero mejor.' },
+  { id: '003', q: '¿Funciona en español latino? ¿Entiende mis modismos?', a: '100% latino. Entiende argentinismos, mexicanismos, colombianismos. Voko sabe que no hablas como en Madrid.' },
+  { id: '004', q: '¿Mis mensajes se guardan? ¿Venden mis datos?', a: 'Nunca. Tus mensajes se procesan en el momento y se borran. Cero datos vendidos. Tu privacidad es sagrada.' },
+  { id: '005', q: '¿Por qué pagar si ChatGPT es gratis?', a: 'ChatGPT es genérico. Voko hace UNA cosa perfectamente: convertir tu voz en texto profesional. Es especialista, no generador.' },
 ]
 
 const bonos = [
-  { icon: '📋', title: 'Biblioteca de 50 situaciones', desc: 'Plantillas listas para los mensajes más comunes: cobros, negociaciones, reclamos, propuestas. Editables y adaptables a tu voz.', value: '$29' },
-  { icon: '🎤', title: 'Perfil de voz en 5 minutos', desc: 'Guía interactiva que calibra Voko a tu forma de hablar desde el primer uso. El resultado suena a ti, no a IA.', value: '$19' },
-  { icon: '⚡', title: 'Modo Negociación desbloqueado', desc: 'Las 3 versiones por mensaje (Suave / Firme / Última instancia) disponibles desde el primer día. Para cuando la situación es delicada.', value: '$15' },
+  { icon: '🛡️', title: 'Garantía 30 días', desc: 'Si en los primeros 30 días no ves resultados, devolvemos tu dinero. Sin preguntas.' },
+  { icon: '⚡', title: 'Onboarding en 5 minutos', desc: 'Setup automático de tu perfil de voz. Listo para usar inmediatamente. Sin complicaciones.' },
+  { icon: '📞', title: 'Acceso a Kelo.lat', desc: 'Resumidor de reuniones automático. Convierte tus llamadas en notas profesionales en segundos.' },
 ]
 
 const metrics = [
-  { value: '+847', label: 'mensajes esta semana', color: '#6366F1' },
+  { value: '847', label: 'usuarios activos hoy', color: '#6366F1' },
   { value: '4.2 min', label: 'ahorrados por mensaje', color: '#22D3EE' },
-  { value: '3 tonos', label: 'disponibles por situación', color: '#A78BFA' },
-  { value: 'es-LATAM', label: 'español latino no traducido', color: '#22C55E' },
+  { value: '3 tonos', label: 'para cada situación', color: '#A78BFA' },
+  { value: '15 días', label: 'gratis sin tarjeta', color: '#22C55E' },
 ]
 
 const testimonials = [
   {
     name: 'Valentina M.', role: 'Consultora freelance · Bogotá',
-    before: 'Tardaba 15 min redactando emails a clientes difíciles.',
-    after: 'Dicto en 30 seg. El mensaje suena exactamente como quiero sonar.',
+    before: 'Escribía propuestas en 20 min.',
+    after: 'Ahora en 2 min. Gano más clientes.',
   },
   {
     name: 'Rodrigo T.', role: 'Dueño de agencia · Quito',
-    before: 'Perdía clientes por mensajes que sonaban agresivos.',
-    after: 'Usé modo Firme para reclamar $8k. Respondieron en menos de una hora.',
+    before: 'Perdía clientes por tono áspero.',
+    after: 'Modo Firme. Cobré $8k que debía.',
   },
   {
     name: 'Camila S.', role: 'Ejecutiva de ventas · CDMX',
-    before: 'Clientes confundían mi tono — ni formal ni informal.',
-    after: 'Ahora tengo 3 tonos para cada situación. Cierre +40%.',
+    before: 'Clientes confundían mi tono.',
+    after: 'Ahora 3 tonos. Cierre +40%.',
   },
 ]
 
@@ -167,7 +176,6 @@ export default function Home() {
 
         {/* ── BLOQUE 1: HERO ── */}
         <header style={{ paddingTop: 64, minHeight: '100vh', display: 'flex', alignItems: 'center', position: 'relative', overflow: 'hidden' }}>
-          {/* glow */}
           <div style={{
             position: 'absolute', top: '20%', left: '50%', transform: 'translateX(-50%)',
             width: '80%', height: '60%',
@@ -178,37 +186,29 @@ export default function Home() {
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center' }}>
               {/* Left */}
               <div>
-                <div style={{ marginBottom: 24, display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(34,211,238,0.08)', border: '1px solid rgba(34,211,238,0.2)', borderRadius: 100, padding: '6px 14px' }}>
-                  <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#22D3EE', display: 'block', animation: 'pulse-glow 2s infinite' }} />
-                  <span style={{ fontSize: 12, fontFamily: 'var(--font-dm-mono)', color: '#22D3EE' }}>
-                    847 personas lo vieron funcionar hoy. Tú aún estás escribiendo a mano.
-                  </span>
-                </div>
-
                 <h1 style={{
                   fontFamily: 'var(--font-dm-serif)', fontWeight: 400,
                   fontSize: 'clamp(48px, 6vw, 80px)', letterSpacing: '-0.04em', lineHeight: 0.95,
                   color: '#F8FAFC', marginBottom: 24,
                 }}>
-                  Dicta.<br />
-                  <span className="text-gradient">Voko lo convierte.</span>
+                  No escribas. Solo habla.
                 </h1>
 
                 <p style={{ ...S.muted, maxWidth: 480, marginBottom: 16 }}>
-                  Hablas con naturalidad — molesto, apurado, como sea. Voko entiende cómo te sientes y entrega el mensaje listo para WhatsApp, email o lo que necesites. En el tono exacto que la situación pide.
+                  Habla con naturalidad. Voko transcribe, edita y formatea al instante. Lo que dices se convierte en texto profesional, sin relleno ni errores.
                 </p>
 
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, marginBottom: 24 }}>
                   <a href="#hero-form" style={btnPrimary} className="btn-pulse">
-                    → Transformar mi primer mensaje gratis
+                    Prueba 15 días gratis — sin tarjeta
                   </a>
                   <a href="#vsl" style={btnGhost}>
-                    ▶ Ver cómo funciona · 60 seg
+                    Ver en acción
                   </a>
                 </div>
 
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: 20, fontSize: 13, fontFamily: 'var(--font-dm-mono)', color: '#475569' }}>
-                  {['Sin tarjeta', 'Listo en 30 segundos', 'Cancela cuando quieras'].map(b => (
+                  {['15 días gratis. Sin tarjeta.', 'Acceso inmediato', 'Cancela en 1 clic'].map(b => (
                     <span key={b} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
                       <span style={{ color: '#22C55E' }}>✓</span> {b}
                     </span>
@@ -225,15 +225,23 @@ export default function Home() {
                   backdropFilter: 'blur(12px)',
                 }}>
                   <div style={{ fontSize: 11, fontFamily: 'var(--font-dm-mono)', textTransform: 'uppercase', letterSpacing: '0.2em', color: '#6366F1', marginBottom: 16 }}>
-                    // Acceso inmediato
+                    Acceso inmediato
                   </div>
                   <h3 style={{ fontFamily: 'var(--font-dm-serif)', fontSize: 24, color: '#F8FAFC', marginBottom: 8 }}>
                     Tu primer mensaje, listo hoy.
                   </h3>
                   <p style={{ fontSize: 13, color: '#475569', marginBottom: 24 }}>
-                    5 transformaciones gratis. Sin compromiso.
+                    Ilimitado durante 15 días. Cancela cuando quieras.
                   </p>
                   <HeroForm />
+                  <button style={{
+                    width: '100%', marginTop: 12, padding: '13px',
+                    background: 'linear-gradient(135deg, #6366F1, #A78BFA)',
+                    border: 'none', borderRadius: 10, color: '#fff',
+                    fontWeight: 700, fontSize: 14, cursor: 'pointer',
+                  }} className="btn-pulse">
+                    Activar 15 días gratis
+                  </button>
                 </div>
               </div>
             </div>
@@ -264,11 +272,7 @@ export default function Home() {
             </div>
 
             <div style={{ maxWidth: 800, margin: '0 auto', position: 'relative' }}>
-              <div style={{
-                background: 'rgba(8,10,8,0.9)',
-                border: '1px solid rgba(99,102,241,0.25)',
-                borderRadius: 16, overflow: 'hidden',
-              }}>
+              <div style={{ background: 'rgba(8,10,8,0.9)', border: '1px solid rgba(99,102,241,0.25)', borderRadius: 16, overflow: 'hidden' }}>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 16px', borderBottom: '1px solid rgba(99,102,241,0.1)', background: 'rgba(99,102,241,0.04)' }}>
                   <div style={{ display: 'flex', gap: 6 }}>
                     <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#EF4444' }} />
@@ -285,14 +289,6 @@ export default function Home() {
                   <span style={{ fontSize: 13, fontFamily: 'var(--font-dm-mono)', color: '#6366F1' }}>▶ Demo en vivo · 60 seg</span>
                 </div>
               </div>
-
-              <div style={{ marginTop: 16, display: 'flex', alignItems: 'center', gap: 8, background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 10, padding: '10px 16px' }}>
-                <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#22C55E', display: 'block' }} />
-                <span style={{ fontSize: 12, fontFamily: 'var(--font-dm-mono)', color: '#475569' }}>
-                  Carlos R. acaba de enviar un reclamo formal · hace 2 min
-                </span>
-              </div>
-
               <div style={{ textAlign: 'center', marginTop: 24 }}>
                 <a href="#hero-form" style={btnPrimary} className="btn-pulse">
                   Probar ahora gratis →
@@ -305,17 +301,13 @@ export default function Home() {
         {/* ── BLOQUE 3: DOLOR ── */}
         <section id="dolor" style={S.section}>
           <div style={S.container}>
-            <blockquote style={{ borderLeft: '3px solid #6366F1', paddingLeft: 24, maxWidth: 600, margin: '0 auto 48px', fontFamily: 'var(--font-dm-serif)', fontStyle: 'italic', fontSize: 22, color: '#94A3B8', lineHeight: 1.5 }}>
-              "Sé exactamente lo que quiero decir. El problema es cómo decirlo sin que suene mal."
-            </blockquote>
-
             <div style={{ textAlign: 'center', marginBottom: 56 }}>
               <h2 style={S.h2}>
                 El problema no es lo que dices.<br />
                 <span style={{ color: '#EF4444' }}>Es cómo lo escribes.</span>
               </h2>
-              <p style={{ ...S.muted, maxWidth: 520, margin: '0 auto' }}>
-                No es falta de vocabulario. Es que el contexto importa, la relación importa, el tono importa — y todo eso es imposible de calibrar cuando estás ocupado, molesto o con prisa.
+              <p style={{ ...S.muted, maxWidth: 580, margin: '0 auto' }}>
+                Tienes ideas brillantes. Pero cuando te sientas a escribir, pierdes horas. El tono sale mal. Los clientes no entienden. Y lo peor: pierdes dinero por cada minuto que gastas redactando en lugar de cerrar ventas, negociar o liderar.
               </p>
             </div>
 
@@ -329,17 +321,14 @@ export default function Home() {
                         <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#F59E0B' }} />
                         <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#22C55E' }} />
                       </div>
-                      <span style={{ fontSize: 10, fontFamily: 'var(--font-dm-mono)', color: '#EF4444' }}>{d.code} · {d.tag}</span>
+                      <span style={{ fontSize: 10, fontFamily: 'var(--font-dm-mono)', color: '#EF4444' }}>{d.code}</span>
                     </div>
                     <div style={{ padding: '20px' }}>
                       <div style={{ fontSize: 26, marginBottom: 12 }}>{d.emoji}</div>
                       <div style={{ fontWeight: 700, fontSize: 15, color: '#F8FAFC', marginBottom: 16, lineHeight: 1.4 }}>{d.title}</div>
-                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: 12, borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                          <div style={{ width: 5, height: 5, borderRadius: '50%', background: '#EF4444' }} />
-                          <span style={{ fontSize: 10, fontFamily: 'var(--font-dm-mono)', color: '#EF4444' }}>{d.status}</span>
-                        </div>
-                        <span style={{ fontSize: 10, fontFamily: 'var(--font-dm-mono)', color: d.impact === 'crítico' ? '#EF4444' : '#F59E0B' }}>impacto: {d.impact}</span>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 6, paddingTop: 12, borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+                        <div style={{ width: 5, height: 5, borderRadius: '50%', background: '#EF4444' }} />
+                        <span style={{ fontSize: 10, fontFamily: 'var(--font-dm-mono)', color: '#EF4444' }}>Impacto: {d.impact}</span>
                       </div>
                     </div>
                   </div>
@@ -356,16 +345,16 @@ export default function Home() {
               <div>
                 <div style={S.eyebrow}>
                   <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#6366F1', display: 'block' }} />
-                  El costo silencioso
+                  El costo real
                 </div>
                 <h2 style={{ ...S.h2, maxWidth: 480 }}>
-                  Cada mensaje mal enviado tiene un precio. A veces es un cliente. A veces una oportunidad. Siempre es tiempo.
+                  Cuatro veces más rápido que escribir. Cuatro veces más claro. Cero fricción.
                 </h2>
                 <a href="#hero-form" style={btnPrimary} className="btn-pulse">
-                  Empezar gratis — sin tarjeta →
+                  Prueba 15 días — sin tarjeta
                 </a>
               </div>
-              <Terminal lines={terminal1Lines} title="diagnóstico.voko" delay={220} />
+              <Terminal lines={terminal1Lines} title="velocidad.voko" delay={220} />
             </div>
           </div>
         </section>
@@ -374,16 +363,12 @@ export default function Home() {
         <section id="como-funciona" style={S.section}>
           <div style={S.container}>
             <div style={{ textAlign: 'center', marginBottom: 64 }}>
-              <div style={{ ...S.eyebrow, color: '#22D3EE' }}>
-                <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#22D3EE', display: 'block' }} />
-                La solución
-              </div>
-              <h2 style={{ ...S.h2, maxWidth: 740, margin: '0 auto 16px' }}>
-                No es un corrector de texto. No es ChatGPT con otro nombre.<br />
-                <span style={{ color: '#818CF8' }}>Es la primera app que entiende cómo te sientes antes de escribir por ti.</span>
+              <h2 style={{ ...S.h2, maxWidth: 680, margin: '0 auto 16px' }}>
+                La solución es simple:<br />
+                <span style={{ color: '#818CF8' }}>Deja de escribir. Solo habla.</span>
               </h2>
-              <p style={{ ...S.muted, maxWidth: 560, margin: '0 auto' }}>
-                Dictas como hablas — desordenado, molesto, con errores. Voko detecta tu emoción, el canal y la relación. Luego entrega el mensaje que necesitabas decir.
+              <p style={{ ...S.muted, maxWidth: 520, margin: '0 auto' }}>
+                Voko convierte tu voz en texto profesional al instante. Sin esperar. Sin editar. Sin perder dinero.
               </p>
             </div>
 
@@ -391,19 +376,19 @@ export default function Home() {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 12, marginBottom: 56 }}>
               {[
                 {
-                  num: 'PASO_01', icon: '🎤', title: 'Dictas tu idea cruda',
-                  desc: 'Sin filtro. Sin pensar en gramática. Como hablas cuando estás ocupado.',
-                  lines: ['input: "estoy harto, necesito la plata ya"', '→ recibido ✓'],
+                  num: 'PASO_01', icon: '🎤', title: 'Dicta como hablas',
+                  desc: 'Sin filtro. Sin pensar en gramática. Voko entiende tu voz, tu contexto, tu urgencia.',
+                  lines: ['input crudo → recibido ✓'],
                 },
                 {
-                  num: 'PASO_02', icon: '⚡', title: 'Voko detecta el contexto',
-                  desc: 'Emoción, canal, relación y tono recomendado. Todo en menos de un segundo.',
-                  lines: ['emoción: frustración', 'canal: WhatsApp', 'tono: firme profesional'],
+                  num: 'PASO_02', icon: '⚡', title: 'Voko convierte en profesional',
+                  desc: 'Transcribe, edita y formatea al instante. Elimina relleno, corrige tono, añade estructura. Todo automático.',
+                  lines: ['transcribiendo...', 'editando tono...', '→ texto listo ✓'],
                 },
                 {
-                  num: 'PASO_03', icon: '✅', title: 'Elige tu versión y envía',
-                  desc: '3 versiones calibradas. Tú eliges qué tanto apretar. Copia y listo.',
-                  lines: ['[Suave] [Firme] [Última instancia]', '→ mensaje listo ✓'],
+                  num: 'PASO_03', icon: '✅', title: 'Envía y cierra',
+                  desc: 'Texto listo. Profesional. Con tu voz. Copia, pega y sigue vendiendo. Sin más esperas.',
+                  lines: ['→ copiado al portapapeles ✓'],
                 },
               ].map((step) => (
                 <ScrollReveal key={step.num}>
@@ -421,7 +406,7 @@ export default function Home() {
                       <div style={{ fontWeight: 700, fontSize: 16, color: '#F8FAFC', marginBottom: 8 }}>{step.title}</div>
                       <div style={{ fontSize: 13, color: '#475569', lineHeight: 1.6, marginBottom: 14 }}>{step.desc}</div>
                       {step.lines.map((l, i) => (
-                        <div key={i} style={{ fontSize: 12, fontFamily: 'var(--font-dm-mono)', color: l.includes('✓') ? '#22C55E' : l.startsWith('[') ? '#6366F1' : l.startsWith('input:') ? '#94A3B8' : '#94A3B8', lineHeight: 1.8 }}>{l}</div>
+                        <div key={i} style={{ fontSize: 12, fontFamily: 'var(--font-dm-mono)', color: l.includes('✓') ? '#22C55E' : '#94A3B8', lineHeight: 1.8 }}>{l}</div>
                       ))}
                     </div>
                   </div>
@@ -429,37 +414,12 @@ export default function Home() {
               ))}
             </div>
 
-            {/* Modo Negociación */}
-            <ScrollReveal>
-              <div style={{ background: 'rgba(99,102,241,0.05)', border: '1px solid rgba(99,102,241,0.2)', borderRadius: 16, overflow: 'hidden', marginBottom: 48 }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 24px', borderBottom: '1px solid rgba(99,102,241,0.12)', background: 'rgba(99,102,241,0.05)' }}>
-                  <div style={{ display: 'flex', gap: 6 }}>
-                    <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#EF4444' }} />
-                    <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#F59E0B' }} />
-                    <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#22C55E' }} />
-                  </div>
-                  <span style={{ fontSize: 11, fontFamily: 'var(--font-dm-mono)', color: '#6366F1' }}>⚡ MODO NEGOCIACIÓN — cuando la situación es delicada, Voko no te da una respuesta. Te da tres.</span>
-                  <div />
-                </div>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 0 }}>
-                  {[
-                    { label: 'Suave', color: '#22C55E', desc: 'Mantén la relación', example: '"Hola, quería recordarte sobre el pago pendiente. Cuando tengas un momento, ¿me confirmas?"' },
-                    { label: 'Firme', color: '#F59E0B', desc: 'Deja claro el punto', example: '"Necesito que confirmes el pago esta semana. Llevamos 15 días de retraso y debo cuadrar mis cuentas."' },
-                    { label: 'Última instancia', color: '#EF4444', desc: 'Sin vuelta atrás', example: '"Si no recibo el pago antes del viernes, deberé pausar el proyecto y proceder formalmente."' },
-                  ].map((v, i) => (
-                    <div key={v.label} style={{ padding: '24px 20px', borderRight: i < 2 ? '1px solid rgba(255,255,255,0.06)' : 'none' }}>
-                      <div style={{ display: 'inline-block', padding: '3px 10px', borderRadius: 100, background: `${v.color}18`, border: `1px solid ${v.color}40`, color: v.color, fontSize: 11, fontFamily: 'var(--font-dm-mono)', marginBottom: 10 }}>{v.label}</div>
-                      <div style={{ fontSize: 12, color: '#475569', marginBottom: 12 }}>{v.desc}</div>
-                      <div style={{ fontSize: 12, color: '#94A3B8', fontStyle: 'italic', lineHeight: 1.6 }}>{v.example}</div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </ScrollReveal>
-
             {/* Tonos por canal */}
-            <div style={{ marginBottom: 12 }}>
-              <div style={{ fontSize: 11, fontFamily: 'var(--font-dm-mono)', color: '#475569', marginBottom: 16 }}>// Se adapta a cada canal automáticamente</div>
+            <div style={{ textAlign: 'center', marginBottom: 32 }}>
+              <h3 style={{ fontFamily: 'var(--font-dm-serif)', fontSize: 28, color: '#F8FAFC', marginBottom: 12 }}>Se adapta a cada contexto</h3>
+              <p style={{ ...S.muted, maxWidth: 560, margin: '0 auto' }}>
+                Voko detecta dónde estás escribiendo y ajusta el tono automáticamente. WhatsApp, Email, LinkedIn. Siempre suena como tú, nunca como un robot.
+              </p>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 12 }}>
               {[
@@ -479,15 +439,6 @@ export default function Home() {
         {/* ── BLOQUE 6: PRUEBA SOCIAL ── */}
         <section style={S.section}>
           <div style={S.container}>
-            <div style={{ textAlign: 'center', marginBottom: 56 }}>
-              <div style={S.eyebrow}>
-                <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#6366F1', display: 'block' }} />
-                Resultados reales
-              </div>
-              <h2 style={S.h2}>Personas que ya no escriben mensajes importantes a mano.</h2>
-            </div>
-
-            {/* Metrics */}
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 12, marginBottom: 56 }}>
               {metrics.map(m => (
                 <ScrollReveal key={m.label}>
@@ -499,11 +450,10 @@ export default function Home() {
               ))}
             </div>
 
-            {/* Testimonials */}
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 16 }}>
               {testimonials.map((t) => (
                 <ScrollReveal key={t.name}>
-                  <div style={{ background: 'rgba(8,10,8,0.85)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 14, padding: '24px', overflow: 'hidden' }}>
+                  <div style={{ background: 'rgba(8,10,8,0.85)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 14, padding: '24px' }}>
                     <div style={{ display: 'flex', gap: 4, marginBottom: 16 }}>
                       {[...Array(5)].map((_, i) => <span key={i} style={{ color: '#F59E0B', fontSize: 13 }}>★</span>)}
                     </div>
@@ -530,30 +480,21 @@ export default function Home() {
         <section id="industrias" style={S.section}>
           <div style={S.container}>
             <div style={{ textAlign: 'center', marginBottom: 56 }}>
-              <h2 style={S.h2}>
-                Voko funciona para cualquiera que comunique por texto.<br />Especialmente si lo hace todos los días.
-              </h2>
+              <h2 style={S.h2}>Funciona en cualquier dispositivo</h2>
+              <p style={{ ...S.muted, maxWidth: 480, margin: '0 auto' }}>
+                Teléfono, tablet, computadora. Tu diccionario personal, estilo y configuración sincronizados en todas partes.
+              </p>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 12 }}>
               {industrias.map((ind) => (
                 <ScrollReveal key={ind.name}>
-                  <div style={{ background: 'rgba(8,10,8,0.85)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 14, overflow: 'hidden' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 16px', borderBottom: '1px solid rgba(255,255,255,0.05)', background: 'rgba(255,255,255,0.02)' }}>
-                      <div style={{ display: 'flex', gap: 6 }}>
-                        <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#EF4444' }} />
-                        <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#F59E0B' }} />
-                        <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#22C55E' }} />
-                      </div>
-                      <span style={{ fontSize: 10, fontFamily: 'var(--font-dm-mono)', color: '#6366F1' }}>{ind.cmd}</span>
-                    </div>
-                    <div style={{ padding: '20px' }}>
-                      <div style={{ fontSize: 28, marginBottom: 10 }}>{ind.icon}</div>
-                      <div style={{ fontWeight: 700, fontSize: 17, color: '#F8FAFC', marginBottom: 12 }}>{ind.name}</div>
-                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
-                        {ind.tags.map(tag => (
-                          <span key={tag} style={{ fontSize: 11, fontFamily: 'var(--font-dm-mono)', padding: '3px 10px', borderRadius: 4, background: 'rgba(99,102,241,0.1)', border: '1px solid rgba(99,102,241,0.2)', color: '#818CF8' }}>{tag}</span>
-                        ))}
-                      </div>
+                  <div style={{ background: 'rgba(8,10,8,0.85)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 14, padding: '24px' }}>
+                    <div style={{ fontSize: 28, marginBottom: 10 }}>{ind.icon}</div>
+                    <div style={{ fontWeight: 700, fontSize: 17, color: '#F8FAFC', marginBottom: 12 }}>{ind.name}</div>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+                      {ind.tags.map(tag => (
+                        <span key={tag} style={{ fontSize: 11, fontFamily: 'var(--font-dm-mono)', padding: '3px 10px', borderRadius: 4, background: 'rgba(99,102,241,0.1)', border: '1px solid rgba(99,102,241,0.2)', color: '#818CF8' }}>{tag}</span>
+                      ))}
                     </div>
                   </div>
                 </ScrollReveal>
@@ -562,8 +503,44 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── BLOQUE 8: BANNER 2 ── */}
+        {/* ── BLOQUE 8: BASE DE CONOCIMIENTO ── */}
         <section style={{ padding: '0', borderTop: '1px solid rgba(99,102,241,0.12)', borderBottom: '1px solid rgba(99,102,241,0.12)', background: 'rgba(99,102,241,0.04)' }}>
+          <div style={S.container}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center', padding: '64px 0' }}>
+              <div>
+                <div style={S.eyebrow}>
+                  <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#6366F1', display: 'block' }} />
+                  Personalización
+                </div>
+                <h2 style={{ ...S.h2, maxWidth: 440 }}>
+                  Voko aprende cómo hablas tú
+                </h2>
+                <p style={{ ...S.muted, marginBottom: 32 }}>
+                  Sube ejemplos de emails que has enviado, chats con clientes, mensajes importantes. Voko aprende tu estilo, tu vocabulario y tu tono. Resultado: textos que suenan exactamente como tú — solo sin errores.
+                </p>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+                  {[
+                    { icon: '📄', title: 'Sube tus mensajes', desc: 'Emails, chats, documentos. Cualquier texto tuyo sirve.' },
+                    { icon: '🧠', title: 'Voko aprende tu estilo', desc: 'Analiza vocabulario, tono y estructura. Completamente automático.' },
+                    { icon: '✨', title: 'Resultado personalizado', desc: 'Cada texto generado suena a ti. No a un robot genérico.' },
+                  ].map(f => (
+                    <div key={f.icon} style={{ display: 'flex', gap: 14, alignItems: 'flex-start' }}>
+                      <span style={{ fontSize: 22, lineHeight: 1 }}>{f.icon}</span>
+                      <div>
+                        <div style={{ fontWeight: 600, fontSize: 15, color: '#F8FAFC', marginBottom: 2 }}>{f.title}</div>
+                        <div style={{ fontSize: 13, color: '#475569', lineHeight: 1.5 }}>{f.desc}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <Terminal lines={terminalBaseLines} title="base_conocimiento" delay={260} />
+            </div>
+          </div>
+        </section>
+
+        {/* ── BLOQUE 8B: BANNER 2 ── */}
+        <section style={{ padding: '0', borderBottom: '1px solid rgba(99,102,241,0.12)' }}>
           <div style={S.container}>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center', padding: '64px 0' }}>
               <div>
@@ -587,13 +564,9 @@ export default function Home() {
         <section style={S.section}>
           <div style={S.container}>
             <div style={{ textAlign: 'center', marginBottom: 56 }}>
-              <div style={S.eyebrow}>
-                <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#6366F1', display: 'block' }} />
-                Objeciones resueltas
-              </div>
-              <h2 style={S.h2}>Las preguntas que probablemente tienes</h2>
-              <p style={{ ...S.muted, maxWidth: 520, margin: '0 auto' }}>
-                Sin marketing. Sin respuestas de relleno. Las dudas reales, respondidas como persona real.
+              <h2 style={S.h2}>Sabemos lo que te preocupa</h2>
+              <p style={{ ...S.muted, maxWidth: 480, margin: '0 auto' }}>
+                Aquí están las respuestas reales. Sin marketing. Sin mentiras.
               </p>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(440px, 1fr))', gap: 12 }}>
@@ -621,38 +594,11 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── BLOQUE 10: PRECIOS ── */}
-        <section id="precios" style={S.section}>
-          <div style={S.container}>
-            <div style={{ textAlign: 'center', marginBottom: 48 }}>
-              <div style={S.eyebrow}>
-                <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#6366F1', display: 'block' }} />
-                Precios
-              </div>
-              <h2 style={S.h2}>Empieza gratis. Crece cuando lo necesites.</h2>
-              <p style={{ ...S.muted, maxWidth: 420, margin: '0 auto' }}>
-                Sin contratos. Sin sorpresas. Cancela cuando quieras.
-              </p>
-            </div>
-            <PriceToggle />
-          </div>
-        </section>
-
-        {/* ── BLOQUE 11: BONOS ── */}
+        {/* ── BLOQUE 10: BONOS ── */}
         <section style={S.section}>
           <div style={S.container}>
             <div style={{ textAlign: 'center', marginBottom: 56 }}>
-              <div style={S.eyebrow}>
-                <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#6366F1', display: 'block' }} />
-                Bonos incluidos
-              </div>
-              <h2 style={S.h2}>
-                Al activar tu plan Pro, esto viene incluido sin costo adicional:
-              </h2>
-              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12, background: 'rgba(99,102,241,0.08)', border: '1px solid rgba(99,102,241,0.2)', borderRadius: 100, padding: '8px 20px' }}>
-                <span style={{ fontSize: 13, color: '#475569', fontFamily: 'var(--font-dm-mono)', textDecoration: 'line-through' }}>Valor total: $63</span>
-                <span style={{ fontSize: 13, color: '#6366F1', fontFamily: 'var(--font-dm-mono)', fontWeight: 700 }}>→ Incluido en Pro</span>
-              </div>
+              <h2 style={S.h2}>Al activar tu plan Pro, esto viene incluido:</h2>
             </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 12, marginBottom: 48 }}>
@@ -670,22 +616,61 @@ export default function Home() {
                     <div style={{ padding: '20px' }}>
                       <div style={{ fontSize: 28, marginBottom: 12 }}>{b.icon}</div>
                       <div style={{ fontWeight: 700, fontSize: 16, color: '#F8FAFC', marginBottom: 8 }}>{b.title}</div>
-                      <div style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.7, marginBottom: 16 }}>{b.desc}</div>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', paddingTop: 12, borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-                        <span style={{ fontSize: 12, color: '#475569', fontFamily: 'var(--font-dm-mono)', textDecoration: 'line-through' }}>del {b.value}</span>
-                        <span style={{ fontSize: 12, color: '#22C55E', fontFamily: 'var(--font-dm-mono)', fontWeight: 700 }}>✓ Incluido</span>
-                      </div>
+                      <div style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.7 }}>{b.desc}</div>
                     </div>
                   </div>
                 </ScrollReveal>
               ))}
             </div>
 
+            {/* Kelo section */}
+            <ScrollReveal>
+              <div style={{ background: 'rgba(99,102,241,0.05)', border: '1px solid rgba(99,102,241,0.2)', borderRadius: 16, padding: '40px', marginBottom: 48 }}>
+                <h3 style={{ fontFamily: 'var(--font-dm-serif)', fontSize: 28, color: '#F8FAFC', marginBottom: 16 }}>¿Qué es Kelo.lat?</h3>
+                <p style={{ ...S.muted, marginBottom: 24, maxWidth: 640 }}>
+                  Kelo es un resumidor de reuniones impulsado por IA. Mientras hablas en una llamada, Kelo escucha, entiende y genera automáticamente notas profesionales con los puntos clave, acuerdos y tareas pendientes.
+                </p>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 24 }}>
+                  {[
+                    'Captura automática de decisiones y acuerdos',
+                    'Notas formateadas listas para compartir',
+                    'Funciona con Voko para máxima eficiencia',
+                  ].map(f => (
+                    <div key={f} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                      <span style={{ color: '#22C55E', fontSize: 16 }}>✓</span>
+                      <span style={{ fontSize: 14, color: '#94A3B8' }}>{f}</span>
+                    </div>
+                  ))}
+                </div>
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12, background: 'rgba(99,102,241,0.08)', border: '1px solid rgba(99,102,241,0.2)', borderRadius: 100, padding: '8px 20px' }}>
+                  <span style={{ fontSize: 13, color: '#475569', fontFamily: 'var(--font-dm-mono)', textDecoration: 'line-through' }}>Valor normal: $29/mes</span>
+                  <span style={{ fontSize: 13, color: '#22C55E', fontFamily: 'var(--font-dm-mono)', fontWeight: 700 }}>Incluido gratis en Pro</span>
+                </div>
+              </div>
+            </ScrollReveal>
+
             <div style={{ textAlign: 'center' }}>
+              <p style={{ fontFamily: 'var(--font-dm-serif)', fontSize: 22, color: '#F8FAFC', marginBottom: 24 }}>
+                Todo esto por <span style={{ color: '#6366F1' }}>$5.99/mes</span>
+              </p>
               <a href="#hero-form" style={{ ...btnPrimary, fontSize: 17, padding: '16px 40px' }} className="btn-pulse">
-                Activar Pro y reclamar mis bonos →
+                Activar Pro después del trial
               </a>
             </div>
+          </div>
+        </section>
+
+        {/* ── BLOQUE 11: PRECIOS ── */}
+        <section id="precios" style={S.section}>
+          <div style={S.container}>
+            <div style={{ textAlign: 'center', marginBottom: 48 }}>
+              <div style={S.eyebrow}>
+                <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#6366F1', display: 'block' }} />
+                Precios
+              </div>
+              <h2 style={S.h2}>Empieza gratis. Crece cuando lo necesites.</h2>
+            </div>
+            <PriceToggle />
           </div>
         </section>
 
@@ -705,29 +690,24 @@ export default function Home() {
           <div style={{ position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)', width: '60%', height: '40%', background: 'radial-gradient(ellipse at top, rgba(34,211,238,0.08) 0%, transparent 70%)', pointerEvents: 'none' }} />
 
           <div style={{ ...S.container, position: 'relative' }}>
-            <div style={{ ...S.eyebrow, justifyContent: 'center' }}>
-              <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#6366F1', display: 'block' }} />
-              El momento de cambiar
-            </div>
-
-            <h2 style={{ fontFamily: 'var(--font-dm-serif)', fontWeight: 400, fontSize: 'clamp(40px, 6vw, 72px)', letterSpacing: '-0.03em', lineHeight: 1.05, marginBottom: 24 }}>
-              <span style={{ color: '#EF4444' }}>El que sigue escribiendo a mano.</span><br />
-              <span style={{ color: '#22C55E' }}>O el que dicta y envía con confianza.</span>
+            <h2 style={{ fontFamily: 'var(--font-dm-serif)', fontWeight: 400, fontSize: 'clamp(40px, 6vw, 72px)', letterSpacing: '-0.03em', lineHeight: 1.05, marginBottom: 24, color: '#F8FAFC' }}>
+              Dos caminos.
             </h2>
 
-            <p style={{ ...S.muted, maxWidth: 520, margin: '0 auto 12px' }}>
-              Empieza gratis. Sin tarjeta. Si en los primeros 5 mensajes no sientes la diferencia, no necesitas el Pro.
+            <p style={{ ...S.muted, maxWidth: 560, margin: '0 auto 16px' }}>
+              El que sigue escribiendo a mano. Molesto. Redactando. Perdiendo clientes. O el que dicta en 30 segundos, Voko lo convierte, y envía con confianza.
             </p>
-            <p style={{ fontFamily: 'var(--font-dm-serif)', fontStyle: 'italic', fontSize: 18, color: '#6366F1', marginBottom: 40 }}>
-              Pero la vas a sentir.
+
+            <p style={{ ...S.muted, maxWidth: 480, margin: '0 auto 40px' }}>
+              Prueba 15 días gratis. Sin tarjeta. Si no ves la diferencia en los primeros 3 mensajes, cancela. Pero la vas a ver.
             </p>
 
             <a href="#hero-form" style={{ ...btnPrimary, fontSize: 18, padding: '18px 48px', borderRadius: 12 }} className="btn-pulse">
-              → Dictar mi primer mensaje ahora
+              Activar 15 días gratis ahora
             </a>
 
             <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 24, marginTop: 32 }}>
-              {['Sin tarjeta', '30 segundos para empezar', 'Cancela cuando quieras', 'En español latino'].map(b => (
+              {['15 días gratis', 'Sin tarjeta de crédito', 'Cancela en 1 clic', '100% en español latino'].map(b => (
                 <span key={b} style={{ fontSize: 13, color: '#475569', fontFamily: 'var(--font-dm-mono)', display: 'flex', alignItems: 'center', gap: 6 }}>
                   <span style={{ color: '#22C55E' }}>✓</span> {b}
                 </span>
@@ -737,42 +717,11 @@ export default function Home() {
         </section>
 
         {/* ── FOOTER ── */}
-        <footer style={{ borderTop: '1px solid rgba(255,255,255,0.06)', padding: '64px 0 40px' }}>
-          <div style={S.container}>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: 40, marginBottom: 48 }}>
-              <div>
-                <div style={{ fontFamily: 'var(--font-dm-serif)', fontSize: 24, color: '#F8FAFC', marginBottom: 8 }}>Voko</div>
-                <p style={{ fontSize: 13, color: '#475569', lineHeight: 1.6 }}>Dictas. Voko convierte. El mensaje perfecto en el tono que la situación pide.</p>
-              </div>
-              <div>
-                <div style={{ fontSize: 11, fontFamily: 'var(--font-dm-mono)', color: '#475569', textTransform: 'uppercase', letterSpacing: '0.15em', marginBottom: 16 }}>Producto</div>
-                {['Cómo funciona', 'Precios', 'FAQ'].map(l => (
-                  <div key={l} style={{ marginBottom: 10 }}>
-                    <a href="#" style={{ fontSize: 14, color: '#94A3B8', textDecoration: 'none' }}>{l}</a>
-                  </div>
-                ))}
-              </div>
-              <div>
-                <div style={{ fontSize: 11, fontFamily: 'var(--font-dm-mono)', color: '#475569', textTransform: 'uppercase', letterSpacing: '0.15em', marginBottom: 16 }}>Legal</div>
-                {['Privacidad', 'Términos', 'Contacto'].map(l => (
-                  <div key={l} style={{ marginBottom: 10 }}>
-                    <a href="#" style={{ fontSize: 14, color: '#94A3B8', textDecoration: 'none' }}>{l}</a>
-                  </div>
-                ))}
-              </div>
-              <div>
-                <div style={{ fontSize: 11, fontFamily: 'var(--font-dm-mono)', color: '#475569', textTransform: 'uppercase', letterSpacing: '0.15em', marginBottom: 16 }}>Acceso</div>
-                {['Crear cuenta', 'Iniciar sesión'].map(l => (
-                  <div key={l} style={{ marginBottom: 10 }}>
-                    <a href="#" style={{ fontSize: 14, color: '#94A3B8', textDecoration: 'none' }}>{l}</a>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: 24, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
-              <span style={{ fontSize: 13, color: '#475569', fontFamily: 'var(--font-dm-mono)' }}>Voko · © 2026 — Dicta. Convierte. Envía.</span>
-              <span style={{ fontSize: 13, color: '#475569', fontFamily: 'var(--font-dm-mono)' }}>voko.lat</span>
-            </div>
+        <footer style={{ borderTop: '1px solid rgba(255,255,255,0.06)', padding: '40px 0' }}>
+          <div style={{ ...S.container, textAlign: 'center' }}>
+            <span style={{ fontSize: 13, color: '#475569', fontFamily: 'var(--font-dm-mono)' }}>
+              © 2026 Voko. Todos los derechos reservados.
+            </span>
           </div>
         </footer>
 
