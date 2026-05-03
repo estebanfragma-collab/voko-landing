@@ -63,7 +63,7 @@ export default function PriceToggle() {
           <div style={{ fontSize: 48, fontWeight: 800, color: '#F8FAFC', letterSpacing: '-2px', lineHeight: 1, marginBottom: 4 }}>$0</div>
           <div style={{ fontSize: 13, color: '#475569', marginBottom: 24 }}>/mes</div>
           <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 28px', display: 'flex', flexDirection: 'column', gap: 10 }}>
-            {['5 transformaciones/mes', '3 tonos básicos', 'WhatsApp + Email', 'Sin tarjeta de crédito'].map(f => (
+            {['5 transformaciones/mes', 'WhatsApp y email', '3 tonos básicos', 'Sin tarjeta'].map(f => (
               <li key={f} style={{ fontSize: 14, color: '#94A3B8', display: 'flex', alignItems: 'center', gap: 8 }}>
                 <span style={{ color: '#22C55E' }}>✓</span> {f}
               </li>
@@ -105,8 +105,7 @@ export default function PriceToggle() {
               'Perfil de voz personalizado',
               'Historial completo',
               'Todos los canales',
-              'Score de tono',
-              'Soporte en español',
+              'Score de tono animado',
             ].map(f => (
               <li key={f} style={{ fontSize: 14, color: '#F8FAFC', display: 'flex', alignItems: 'center', gap: 8 }}>
                 <span style={{ color: '#6366F1' }}>✓</span> {f}
