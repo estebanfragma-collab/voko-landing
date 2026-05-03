@@ -12,6 +12,10 @@ const config: Config = {
         indigo: { DEFAULT: '#6366F1', 2: '#818CF8' },
         violet: { DEFAULT: '#A78BFA' },
         cyan: { DEFAULT: '#22D3EE' },
+        bg: '#020818',
+      },
+      backgroundColor: {
+        base: '#020818',
       },
       fontFamily: {
         serif: ['var(--font-dm-serif)', 'serif'],
